@@ -1,0 +1,37 @@
+@model EmployeeCrudApp.Models.VerifyOtpViewModel
+
+@{
+    ViewData["Title"] = "Verify OTP";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="card shadow-sm" style="width: 100%; max-width: 400px; margin: auto; margin-top: 50px;">
+    <div class="card-body">
+        <h2 class="text-center mb-4">Verify OTP</h2>
+        <p class="text-center text-muted">Please enter the 6-digit code sent to your email.</p>
+        <div class="alert alert-info py-2" style="font-size: 0.9rem;">
+            Check your email (or <code>email_log.txt</code> if SMTP is not configured) for the code.
+        </div>
+        <section>
+            <form asp-action="VerifyOtp" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <div class="form-group mb-3">
+                    <label asp-for="Otp" class="control-label"></label>
+                    <input asp-for="Otp" class="form-control" placeholder="Enter 6-digit OTP" autocomplete="off" maxlength="6" />
+                    <span asp-validation-for="Otp" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group d-grid">
+                    <button type="submit" class="btn btn-primary btn-block">Verify & Login</button>
+                    <a asp-action="Login" class="btn btn-link text-center mt-2">Back to Login</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,145 @@
+﻿@model EmployeeCrudApp.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-3 fw-bold text-primary mb-2">Admin Dashboard</h1>
+            <p class="lead text-muted">Overview of your application's data at a glance.</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <!-- Employee Count Card -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-lg h-100 overflow-hidden" style="border-radius: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <div class="card-body p-4 position-relative">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="bg-white bg-opacity-25 rounded-circle p-3">
+                            <i class="bi bi-people-fill fs-1"></i>
+                        </div>
+                        <span class="badge bg-white bg-opacity-25 rounded-pill px-3 py-2">Total</span>
+                    </div>
+                    <h3 class="card-title h5 mb-1 opacity-75">Employees</h3>
+                    <h2 class="display-4 fw-bold mb-0">@Model.TotalEmployees</h2>
+                    
+                    <!-- Decorative Circle -->
+                    <div class="position-absolute" style="bottom: -20px; right: -20px; width: 100px; height: 100px; background: white; opacity: 0.1; border-radius: 50%;"></div>
+                </div>
+                <div class="card-footer bg-white bg-opacity-10 border-0 py-3 text-center">
+                    <a asp-controller="Employee" asp-action="Index" class="text-white text-decoration-none fw-bold small">Manage Employees <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Count Card -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-lg h-100 overflow-hidden" style="border-radius: 20px; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); color: #6d2c2c;">
+                <div class="card-body p-4 position-relative">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="bg-dark bg-opacity-10 rounded-circle p-3">
+                            <i class="bi bi-person-badge fs-1"></i>
+                        </div>
+                        <span class="badge bg-dark bg-opacity-10 rounded-pill px-3 py-2">Auth</span>
+                    </div>
+                    <h3 class="card-title h5 mb-1 opacity-75">Registered Users</h3>
+                    <h2 class="display-4 fw-bold mb-0">@Model.TotalUsers</h2>
+
+                    <!-- Decorative Circle -->
+                    <div class="position-absolute" style="bottom: -20px; right: -20px; width: 100px; height: 100px; background: black; opacity: 0.05; border-radius: 50%;"></div>
+                </div>
+                <div class="card-footer bg-dark bg-opacity-5 border-0 py-3 text-center">
+                    <span class="text-muted small fw-bold">Active System Users</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Info Card -->
+        <div class="col-md-12 col-lg-4">
+            <div class="card border-0 shadow-lg h-100 overflow-hidden" style="border-radius: 20px; background: #ffffff; border: 1px solid #f0f0f0;">
+                <div class="card-body p-4">
+                    <h3 class="h5 fw-bold mb-3 text-dark">System Status</h3>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="spinner-grow spinner-grow-sm text-success me-2" role="status"></div>
+                        <span class="fw-bold text-success">Online & Healthy</span>
+                    </div>
+                    <p class="text-muted small">The system is currently running on .NET 10.0 and all services are performing optimally.</p>
+                    <hr>
+                    <div class="small">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Storage</span>
+                            <span class="fw-bold">JSON Local</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Last Sync</span>
+                            <span class="fw-bold">@DateTime.Now.ToString("t")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm" style="border-radius: 15px;">
+                <div class="card-header bg-white py-3 border-0 d-flex justify-content-between align-items-center">
+                    <h3 class="h5 fw-bold mb-0">Recent Employees</h3>
+                    <a asp-controller="Employee" asp-action="Create" class="btn btn-primary btn-sm rounded-pill px-3">Add New</a>
+                </div>
+                <div class="card-body p-0 text-center">
+                    @if (Model.RecentEmployees.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-4">Name</th>
+                                        <th>Email</th>
+                                        <th>Age</th>
+                                        <th class="pe-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var emp in Model.RecentEmployees)
+                                    {
+                                        <tr>
+                                            <td class="ps-4 fw-bold text-dark">@emp.Name</td>
+                                            <td>@emp.Email</td>
+                                            <td>@emp.Age</td>
+                                            <td class="pe-4">
+                                                <a asp-controller="Employee" asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-sm btn-outline-secondary rounded-pill me-1"><i class="bi bi-pencil"></i></a>
+                                                <a asp-controller="Employee" asp-action="Details" asp-route-id="@emp.Id" class="btn btn-sm btn-outline-info rounded-pill"><i class="bi bi-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="py-5">
+                            <i class="bi bi-inbox display-1 text-light"></i>
+                            <p class="text-muted mt-2">No employees found in the system.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card { transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+    </style>
+}

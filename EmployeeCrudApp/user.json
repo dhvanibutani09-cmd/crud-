@@ -5,7 +5,25 @@
     "Email": "dhvanibutani09@gmail.com",
     "Password": "11111",
     "IsEmailVerified": true,
-    "Otp": null,
-    "OtpExpiry": null
+    "Otp": "aca9750c-5e6b-44ec-89af-dac46d6a5c6e",
+    "OtpExpiry": "2026-01-07T17:43:31.2148652+05:30"
+  },
+  {
+    "Id": 2,
+    "Name": "piyush",
+    "Email": "piyushsheth.rushkar@gmail.com",
+    "Password": "111111",
+    "IsEmailVerified": false,
+    "Otp": "814124",
+    "OtpExpiry": "2026-01-07T14:50:54.5347172+05:30"
+  },
+  {
+    "Id": 3,
+    "Name": "charmi",
+    "Email": "charmimarakana@gmail.com",
+    "Password": "1212",
+    "IsEmailVerified": false,
+    "Otp": "616117",
+    "OtpExpiry": "2026-01-07T14:52:11.3412828+05:30"
   }
 ]

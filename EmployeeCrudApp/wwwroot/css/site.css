@@ -23,8 +23,9 @@ html {
 
 body {
   margin-bottom: 60px;
-  background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%);
-  background-attachment: fixed;
+  background: url('/images/dashboard_bg.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 .form-floating>.form-control-plaintext::placeholder,

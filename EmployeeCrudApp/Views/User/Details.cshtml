@@ -1,0 +1,101 @@
+@model EmployeeCrudApp.Models.User
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="row justify-content-center mt-5 text-white">
+    <div class="col-md-6">
+        <div class="card glass-card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="card-header bg-primary bg-opacity-25 border-bottom border-light border-opacity-10 p-4 text-center">
+                <div class="avatar-circle-lg bg-white text-primary mx-auto mb-3 shadow">
+                    <span class="display-4 fw-bold">@Model.Name.Substring(0, Math.Min(1, Model.Name.Length)).ToUpper()</span>
+                </div>
+                <h2 class="fw-bold mb-0">@Model.Name</h2>
+                <div class="test-white-50">@Model.Email</div>
+            </div>
+            
+            <div class="card-body p-4">
+                <h6 class="text-uppercase text-muted fw-bold small ls-1 mb-3">Account Information</h6>
+                
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded-3 bg-white bg-opacity-5 h-100">
+                            <span class="d-block small text-white-50 mb-1">User ID</span>
+                            <span class="fw-bold fs-5">#@Model.Id</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded-3 bg-white bg-opacity-5 h-100">
+                            <span class="d-block small text-white-50 mb-1">Verification Status</span>
+                            @if (Model.IsEmailVerified)
+                            {
+                                <span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Verified</span>
+                            }
+                            else
+                            {
+                                <span class="text-warning fw-bold"><i class="bi bi-clock-fill me-1"></i> Pending</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-3 bg-white bg-opacity-5 mb-4">
+                    <span class="d-block small text-white-50 mb-1">Password</span>
+                    <span class="font-monospace">@Model.Password</span> <span class="badge bg-secondary ms-2">Plain Text</span>
+                </div>
+
+                <h6 class="text-uppercase text-muted fw-bold small ls-1 mb-3">Security & OTP</h6>
+                
+                @if (!string.IsNullOrEmpty(Model.Otp))
+                {
+                    <div class="alert alert-info border-0 rounded-3 bg-primary bg-opacity-10 text-white">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-shield-lock-fill fs-4 me-3"></i>
+                            <div>
+                                <div class="small text-white-50">Active One-Time Password</div>
+                                <div class="fw-bold fs-5 font-monospace">@Model.Otp</div>
+                            </div>
+                        </div>
+                        <hr class="border-white border-opacity-25 my-2">
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-white-50">Expires at:</span>
+                            <span class="fw-bold">@Model.OtpExpiry?.ToString("MMM dd, yyyy HH:mm:ss")</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center p-4 rounded-3 border border-white border-opacity-10 border-dashed text-white-50">
+                        <i class="bi bi-shield-check fs-2 d-block mb-2 opacity-50"></i>
+                        No active security codes
+                    </div>
+                }
+
+                <div class="d-grid gap-2 mt-4 pt-4 border-top border-white border-opacity-10">
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-light w-100 rounded-pill">Edit Profile</a>
+                        </div>
+                        <div class="col-6">
+                            <a asp-action="Index" class="btn btn-primary w-100 rounded-pill">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .avatar-circle-lg {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .ls-1 { letter-spacing: 1px; }
+    .border-dashed { border-style: dashed !important; }
+</style>

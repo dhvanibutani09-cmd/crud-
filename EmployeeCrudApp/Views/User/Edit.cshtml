@@ -1,0 +1,89 @@
+@model EmployeeCrudApp.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="row justify-content-center mt-5 text-white">
+    <div class="col-md-6">
+        <div class="card glass-card border-0 shadow-lg rounded-4 p-4">
+            <div class="text-center mb-4">
+                <div class="icon-circle bg-info bg-opacity-25 text-info mx-auto mb-3">
+                    <i class="bi bi-pencil-square fs-3"></i>
+                </div>
+                <h2 class="fw-bold">Edit User</h2>
+                <p class="text-white-50 small">Update account information</p>
+            </div>
+
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Otp" />
+                <input type="hidden" asp-for="OtpExpiry" />
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label small text-muted text-uppercase fw-bold ls-1">Full Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0 text-white-50"><i class="bi bi-person"></i></span>
+                        <input asp-for="Name" class="form-control bg-transparent text-dark border-start-0 ps-0 fw-bold" />
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label small text-muted text-uppercase fw-bold ls-1">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0 text-white-50"><i class="bi bi-envelope"></i></span>
+                        <input asp-for="Email" class="form-control bg-transparent text-dark border-start-0 ps-0 fw-bold" />
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Password" class="form-label small text-muted text-uppercase fw-bold ls-1">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0 text-white-50"><i class="bi bi-key"></i></span>
+                        <input asp-for="Password" class="form-control bg-transparent text-dark border-start-0 ps-0 fw-bold" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <div class="form-check mb-4 bg-white bg-opacity-10 rounded-3 p-3 ps-5">
+                    <input class="form-check-input" type="checkbox" asp-for="IsEmailVerified" id="chkVerified">
+                    <label class="form-check-label fw-bold" for="chkVerified">
+                        Email Verified
+                    </label>
+                    <div class="small text-white-50">Unchecking this will require the user to verify again.</div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-info rounded-pill py-2 shadow-sm fw-bold text-white">Save Changes</button>
+                    <a asp-action="Index" class="btn btn-outline-light rounded-pill py-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-control { color: black !important; }
+    .form-control:focus { 
+        background-color: rgba(255, 255, 255, 0.2); 
+        color: black !important; 
+        box-shadow: none; 
+        border-color: var(--bs-info); 
+    }
+    .ls-1 { letter-spacing: 1px; }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

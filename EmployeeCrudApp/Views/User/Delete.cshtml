@@ -1,0 +1,58 @@
+@model EmployeeCrudApp.Models.User
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<div class="row justify-content-center mt-5 text-white">
+    <div class="col-md-5">
+        <div class="card glass-card border-0 shadow-lg rounded-4 p-4 text-center">
+            <div class="mb-4">
+                <div class="icon-circle bg-danger bg-opacity-25 text-danger mx-auto mb-3">
+                    <i class="bi bi-exclamation-triangle-fill fs-3"></i>
+                </div>
+                <h2 class="fw-bold text-danger">Delete User?</h2>
+                <p class="text-white-50">Are you sure you want to permanently delete this user account? This action cannot be undone.</p>
+            </div>
+
+            <div class="bg-white bg-opacity-5 rounded-3 p-3 mb-4 text-start">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="avatar-circle-sm me-3 bg-light text-dark fw-bold">
+                        @Model.Name.Substring(0, Math.Min(1, Model.Name.Length)).ToUpper()
+                    </div>
+                    <div>
+                        <div class="fw-bold">@Model.Name</div>
+                        <div class="small text-white-50">@Model.Email</div>
+                    </div>
+                </div>
+            </div>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-danger rounded-pill py-2 shadow-sm fw-bold">Delete Account</button>
+                    <a asp-action="Index" class="btn btn-outline-light rounded-pill py-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .avatar-circle-sm {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

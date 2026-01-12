@@ -5,5 +5,33 @@
     "Age": 20,
     "Email": "abc@gmail.com",
     "Password": "1234567890"
+  },
+  {
+    "Id": 2,
+    "Name": "fh",
+    "Age": 0,
+    "Email": "dhvanibutani09@gmail.com",
+    "Password": "1212"
+  },
+  {
+    "Id": 4,
+    "Name": "Dhvani",
+    "Age": 0,
+    "Email": "charmimarakana@gmail.com",
+    "Password": "1111"
+  },
+  {
+    "Id": 5,
+    "Name": "abc",
+    "Age": 0,
+    "Email": "zonx1@airsworld.net",
+    "Password": "111"
+  },
+  {
+    "Id": 6,
+    "Name": "axys",
+    "Age": 23,
+    "Email": "hdk9j@airsworld.net",
+    "Password": "11111"
   }
 ]

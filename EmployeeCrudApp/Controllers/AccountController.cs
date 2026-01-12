@@ -42,6 +42,7 @@ namespace EmployeeCrudApp.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Email),
+                        new Claim(ClaimTypes.GivenName, user.Name), // Added for display
                         new Claim("Email", user.Email),
                         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
                     };
@@ -83,27 +84,42 @@ namespace EmployeeCrudApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_userRepository.GetByEmail(model.Email) != null)
+                var existingUser = _userRepository.GetByEmail(model.Email);
+                if (existingUser != null && existingUser.IsEmailVerified)
                 {
                     ModelState.AddModelError("Email", "Email already exists.");
                     return View(model);
                 }
 
                 var otp = new Random().Next(100000, 999999).ToString();
-                var user = new User
+                
+                if (existingUser != null)
                 {
-                    Name = model.Name,
-                    Email = model.Email,
-                    Password = model.Password,
-                    IsEmailVerified = false,
-                    Otp = otp,
-                    OtpExpiry = DateTime.Now.AddMinutes(5)
-                };
+                    // Update existing unverified user
+                    existingUser.Name = model.Name;
+                    existingUser.Password = model.Password;
+                    existingUser.Otp = otp;
+                    existingUser.OtpExpiry = DateTime.Now.AddMinutes(5);
+                    _userRepository.Update(existingUser);
+                }
+                else
+                {
+                    // Create new user
+                    var user = new User
+                    {
+                        Name = model.Name,
+                        Email = model.Email,
+                        Password = model.Password,
+                        IsEmailVerified = false,
+                        Otp = otp,
+                        OtpExpiry = DateTime.Now.AddMinutes(5)
+                    };
+                    _userRepository.Add(user);
+                }
 
-                _userRepository.Add(user);
-
-                await _emailService.SendEmailAsync(user.Email, "Verify your email", $"Your OTP code is: {otp}");
-                HttpContext.Session.SetString("VerifyEmail", user.Email);
+                await _emailService.SendEmailAsync(model.Email, "Verify your email", $"Your OTP code is: {otp}");
+                HttpContext.Session.SetString("VerifyEmail", model.Email);
+                HttpContext.Session.SetString("VerifyName", model.Name); // Added for display
 
                 return RedirectToAction("VerifyOtp");
             }
@@ -115,11 +131,15 @@ namespace EmployeeCrudApp.Controllers
         [AllowAnonymous]
         public IActionResult VerifyOtp()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("VerifyEmail")))
+            var email = HttpContext.Session.GetString("VerifyEmail");
+            if (string.IsNullOrEmpty(email))
             {
                 return RedirectToAction("Login");
             }
-            return View();
+            ViewBag.Name = HttpContext.Session.GetString("VerifyName");
+            
+            var model = new VerifyOtpViewModel { Email = email };
+            return View(model);
         }
 
         [HttpPost]
@@ -128,8 +148,8 @@ namespace EmployeeCrudApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var email = HttpContext.Session.GetString("VerifyEmail");
-                if (string.IsNullOrEmpty(email)) return RedirectToAction("Login");
+                var email = model.Email;
+                // session check removed/secondary because we have email in model
 
                 var user = _userRepository.GetByEmail(email);
 
@@ -143,6 +163,7 @@ namespace EmployeeCrudApp.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Email),
+                        new Claim(ClaimTypes.GivenName, user.Name), // Added for display
                         new Claim("Email", user.Email),
                         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
                     };
@@ -154,6 +175,20 @@ namespace EmployeeCrudApp.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
+
+                    // Sync with Employee Repository
+                    var employees = _employeeRepository.GetAll();
+                    if (!employees.Any(e => e.Email == user.Email))
+                    {
+                        var newEmployee = new Employee
+                        {
+                            Name = user.Name,
+                            Email = user.Email,
+                            Password = user.Password, // Sync password for consistency
+                            Age = 0 // Default age, can be updated later
+                        };
+                        _employeeRepository.Add(newEmployee);
+                    }
 
                     HttpContext.Session.Remove("VerifyEmail");
 

@@ -16,6 +16,10 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.form-control {
+  color: black;
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -23,8 +27,7 @@ html {
 
 body {
   margin-bottom: 60px;
-  background: url('/images/dashboard_bg.png') no-repeat center center fixed;
-  background-size: cover;
+  background: linear-gradient(to right, #ece9e6, #ffffff);
   min-height: 100vh;
 }
 

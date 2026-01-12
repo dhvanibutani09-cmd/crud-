@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Verify User OTP";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">Verify OTP</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">Please enter the OTP sent to the new user's email address to verify the account.</p>
+                    
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                    }
+
+                    <form asp-action="VerifyAddUserOtp" method="post">
+                        <div class="form-group mb-3">
+                            <label for="otp" class="form-label">OTP Code</label>
+                            <input type="text" name="otp" id="otp" class="form-control" placeholder="Enter 6-digit OTP" required maxlength="6" autocomplete="off" />
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Verify User</button>
+                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,5 +7,8 @@ namespace EmployeeCrudApp.Models
         [Required(ErrorMessage = "OTP is required.")]
         [Display(Name = "One Time Password (OTP)")]
         public string Otp { get; set; }
+
+        [Required]
+        public string Email { get; set; } = string.Empty;
     }
 }

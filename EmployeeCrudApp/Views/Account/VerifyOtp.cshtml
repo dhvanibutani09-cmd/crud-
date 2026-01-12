@@ -8,13 +8,19 @@
 <div class="card shadow-sm" style="width: 100%; max-width: 400px; margin: auto; margin-top: 50px;">
     <div class="card-body">
         <h2 class="text-center mb-4">Verify OTP</h2>
-        <p class="text-center text-muted">Please enter the 6-digit code sent to your email.</p>
-        <div class="alert alert-info py-2" style="font-size: 0.9rem;">
+        <div class="text-center mb-4">
+            <div class="small text-muted">Signing up as:</div>
+            <div class="fw-bold fs-5">@ViewBag.Name</div>
+            <div class="small text-primary">@Model.Email</div>
+        </div>
+        <p class="text-center text-muted small">Please enter the 6-digit code sent to your email.</p>
+        <div class="alert alert-info py-2" style="font-size: 0.8rem;">
             Check your email (or <code>email_log.txt</code> if SMTP is not configured) for the code.
         </div>
         <section>
             <form asp-action="VerifyOtp" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Email" />
                 
                 <div class="form-group mb-3">
                     <label asp-for="Otp" class="control-label"></label>

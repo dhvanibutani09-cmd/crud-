@@ -3,7 +3,12 @@
 }
 
 <div class="container mt-4">
-    <h1 class="text-center mb-4 text-white">Welcome to Your Dashboard</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4 text-dark">
+        <h1 class="mb-0">Welcome, @(User.FindFirst(System.Security.Claims.ClaimTypes.GivenName)?.Value ?? User.Identity?.Name)!</h1>
+        <a asp-controller="User" asp-action="Index" class="btn btn-outline-dark rounded-pill px-4">
+            <i class="bi bi-people-fill me-2"></i> Manage Users
+        </a>
+    </div>
     
     <div class="row g-4">
         <!-- Weather Card -->
@@ -21,12 +26,11 @@
                     </div>
                     <div class="mt-3">
                         <div class="input-group input-group-sm mb-2 shadow-sm rounded-pill overflow-hidden">
-                            <input type="text" id="location-input" class="form-control border-0 px-3" placeholder="Enter city, town, or country...">
-                            <button onclick="updateWeather()" class="btn btn-primary border-0 px-3">
+                            <input type="text" id="location-input" class="form-control border-0 px-3" placeholder="Enter city, town, or country..." onkeydown="if(event.key==='Enter'){event.preventDefault(); updateWeather();}">
+                            <button type="button" onclick="updateWeather()" class="btn btn-primary border-0 px-3">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
-                        <p class="small text-muted mb-0">Try "London", "Tokyo", or "France"</p>
                     </div>
                 </div>
             </div>
@@ -75,19 +79,27 @@
                     </div>
                     <h5 class="card-title fw-bold">Time Conversion</h5>
                     <div class="mt-3">
-                        <div class="mb-2">
+                        <div class="mb-3">
                             <label class="form-label small text-muted">Current Local Time:</label>
-                            <div id="local-time" class="fw-bold"></div>
+                            <div id="local-time" class="fw-bold fs-4"></div>
                         </div>
                         <div class="mb-3">
-                            <select id="timezone-select" class="form-select form-select-sm" onchange="updateTargetTime()">
-                                <option value="UTC">UTC (GMT)</option>
-                                <!-- Dynamically populated -->
+                            <div class="input-group input-group-sm mb-2 shadow-sm rounded-pill overflow-hidden border">
+                                <span class="input-group-text border-0 bg-white ps-3"><i class="bi bi-search text-muted"></i></span>
+                                <input type="text" id="timezone-search" class="form-control border-0" placeholder="Search country, city, or village..." oninput="handleGlobalSearch()">
+                            </div>
+                            <div id="search-results" class="list-group list-group-flush shadow-sm rounded-4 overflow-hidden mb-2 d-none" style="position: absolute; width: calc(100% - 3rem); z-index: 1000; max-height: 250px; overflow-y: auto;">
+                                <!-- Results populated here -->
+                            </div>
+                            <select id="timezone-select" class="form-select form-select-sm border-0 shadow-sm rounded-3" onchange="updateTargetTime()" style="display: none;">
+                                <!-- HIDDEN: Deprecated in favor of search-only -->
                             </select>
                         </div>
-                        <div class="p-3 bg-light rounded-3">
-                            <label class="form-label small text-muted">Time in Selected Zone:</label>
-                            <div id="target-time" class="fw-bold fs-5"></div>
+                        <div id="target-time-card" class="p-3 bg-info bg-opacity-10 border border-info border-opacity-10 rounded-4">
+                            <div id="target-location-display" class="small fw-bold text-dark text-uppercase mb-1" style="letter-spacing: 0.5px;">UTC (GMT)</div>
+                            <div id="target-time" class="fw-bold fs-3 text-info">-- : -- : --</div>
+                            <div id="target-date" class="small fw-medium mt-1"></div>
+                            <div id="relative-day" class="badge rounded-pill mt-2"></div>
                         </div>
                     </div>
                 </div>
@@ -124,6 +136,33 @@
     #timezone-select {
         max-height: 200px;
     }
+
+    /* Currency Enhancements */
+    .currency-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .flag-icon {
+        width: 20px;
+        height: 15px;
+        object-fit: cover;
+        border-radius: 2px;
+    }
+    #currency-result {
+        background: rgba(25, 135, 84, 0.1);
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid rgba(25, 135, 84, 0.2);
+    }
+
+    /* Time Enhancements */
+    #target-time-card {
+        transition: all 0.3s ease;
+    }
+    .badge-today { background-color: #0dcaf0; color: white; }
+    .badge-yesterday { background-color: #6c757d; color: white; }
+    .badge-tomorrow { background-color: #198754; color: white; }
 </style>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -131,62 +170,170 @@
 @section Scripts {
     <script>
         // --- Weather Logic ---
-        async function fetchWeather(location = '') {
+        async function detectLocationAndFetchWeather() {
             const content = document.getElementById('weather-content');
+            
+            // Show detecting spinner
             content.innerHTML = `
-                <div class="d-flex justify-content-center p-4">
-                    <div class="spinner-border text-primary" role="status">
+                <div class="text-center p-4">
+                    <div class="spinner-border text-primary mb-3" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
+                    <p class="text-secondary fw-medium mb-0">Detecting location...</p>
+                    <p class="small text-muted">Please allow GPS access if prompted.</p>
+                </div>
+            `;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        fetchWeather(`${latitude},${longitude}`);
+                    },
+                    (error) => {
+                        console.warn('Geolocation error:', error.message);
+                        content.innerHTML = `
+                            <div class="text-center p-4">
+                                <i class="bi bi-geo-alt-fill text-muted fs-1 d-block mb-3"></i>
+                                <p class="text-secondary fw-medium mb-0">Location access denied.</p>
+                                <p class="small text-muted">Please search for your city manually above.</p>
+                            </div>
+                        `;
+                    },
+                    { 
+                        timeout: 5000,
+                        enableHighAccuracy: true 
+                    }
+                );
+            } else {
+                content.innerHTML = `
+                    <div class="text-center p-4">
+                        <i class="bi bi-exclamation-circle text-muted fs-1 d-block mb-3"></i>
+                        <p class="text-secondary fw-medium mb-0">Geolocation not supported.</p>
+                        <p class="small text-muted">Please search for your city manually above.</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function fetchWeather(location = '') {
+            const content = document.getElementById('weather-content');
+            
+            if (!location) {
+                content.innerHTML = `
+                    <div class="text-center p-4">
+                        <i class="bi bi-search text-muted fs-1 d-block mb-3"></i>
+                        <p class="text-secondary fw-medium mb-0">Ready to search.</p>
+                        <p class="small text-muted">Enter a city to see the weather.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            content.innerHTML = `
+                <div class="d-flex flex-column align-items-center justify-content-center p-4">
+                    <div class="spinner-border text-primary mb-2" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <span class="small text-muted">Fetching weather data...</span>
                 </div>
             `;
 
             try {
                 // Using wttr.in for weather data
-                // default to capital for country if only country is provided
-                const response = await fetch(`https://wttr.in/${location || ''}?format=j1`);
+                // Forced metric (m) to ensure Celsius and km/h
+                const response = await fetch(`https://wttr.in/${location || ''}?m&format=j1`);
                 if (!response.ok) throw new Error('Location not found');
                 const data = await response.json();
                 
-                const current = data.current_condition[0];
-                const weatherToday = data.weather[0];
-                const area = data.nearest_area[0];
+                const current = data?.current_condition?.[0] || {};
+                const weatherToday = data?.weather?.[0] || {};
+                const astronomy = weatherToday?.astronomy?.[0] || { sunrise: '--', sunset: '--' };
+                const area = data?.nearest_area?.[0] || { areaName: [{ value: 'Unknown' }] };
                 
-                // Prioritize searched name for display if available
-                let displayName = location ? location.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ') : area.areaName[0].value;
-                const countryName = area.country ? area.country[0].value : '';
+                // Safe extraction of precipitation chance
+                const chanceOfRain = (weatherToday?.hourly?.[0]?.chanceofrain || '0') + '%';
+                
+                // Display logic
+                let displayName = '';
+                if (location && !location.includes(',')) {
+                    // Manual city search
+                    displayName = location.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+                } else {
+                    // Coordinates or IP-based detection
+                    displayName = area.areaName?.[0]?.value || 'Current Location';
+                }
+
+                const countryName = area.country?.[0]?.value || '';
                 const fullLocation = countryName ? `${displayName}, ${countryName}` : displayName;
 
-                // Map weather codes to icons or use descriptions
-                const weatherDesc = current.weatherDesc[0].value;
+                const weatherDesc = current?.weatherDesc?.[0]?.value || 'Unknown';
+                const now = new Date();
+                const lastUpdated = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 
                 content.innerHTML = `
                     <div class="weather-main mb-4">
-                        <div class="display-4 fw-bold text-primary mb-0">${current.temp_C}°C</div>
-                        <div class="fs-5 fw-semibold text-dark text-capitalize">${weatherDesc}</div>
-                        <div class="small text-muted">RealFeel: ${current.FeelsLikeC}°C</div>
+                        <div class="display-4 fw-bold text-primary mb-0">${current?.temp_C || '--'}°C</div>
+                        <div class="small fw-semibold text-muted mb-2"><i class="bi bi-thermometer-half"></i> Accurate Celsius</div>
+                        <div class="fs-5 fw-semibold text-dark text-capitalize lh-sm mb-1">${weatherDesc}</div>
+                        <div class="small text-muted mb-2">RealFeel: ${current?.FeelsLikeC || '--'}°C</div>
+                        ${location && location.includes(',') ? '<div class="badge bg-info bg-opacity-10 text-info mt-1"><i class="bi bi-crosshair me-1"></i> Current Location</div>' : ''}
                     </div>
                     
-                    <div class="row g-3 mb-4">
+                    <div class="row g-2 mb-3">
                         <div class="col-6">
-                            <div class="stats-box p-3 rounded-4 bg-primary bg-opacity-10 border border-primary border-opacity-10 text-center">
-                                <i class="bi bi-thermometer-low text-primary fs-4 mb-1 d-block"></i>
-                                <span class="d-block small text-muted">Today's Min</span>
-                                <span class="fw-bold fs-5 text-primary">${weatherToday.mintempC}°C</span>
+                            <div class="stats-box p-2 rounded-3 bg-light border text-center h-100">
+                                <span class="d-block smaller text-muted">Sunrise</span>
+                                <span class="fw-bold small text-warning"><i class="bi bi-sunrise me-1"></i>${astronomy.sunrise}</span>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="stats-box p-3 rounded-4 bg-danger bg-opacity-10 border border-danger border-opacity-10 text-center">
-                                <i class="bi bi-thermometer-high text-danger fs-4 mb-1 d-block"></i>
-                                <span class="d-block small text-muted">Today's Max</span>
-                                <span class="fw-bold fs-5 text-danger">${weatherToday.maxtempC}°C</span>
+                            <div class="stats-box p-2 rounded-3 bg-light border text-center h-100">
+                                <span class="d-block smaller text-muted">Sunset</span>
+                                <span class="fw-bold small text-danger"><i class="bi bi-sunset me-1"></i>${astronomy.sunset}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-4">
+                            <div class="p-2 rounded-3 bg-primary bg-opacity-10 border border-primary border-opacity-10 text-center h-100">
+                                <span class="d-block smaller text-muted">UV Index</span>
+                                <span class="fw-bold small text-primary">${current?.uvIndex || '0'}</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-2 rounded-3 bg-info bg-opacity-10 border border-info border-opacity-10 text-center h-100">
+                                <span class="d-block smaller text-muted">Pressure</span>
+                                <span class="fw-bold small text-info">${current?.pressure || '--'} hPa</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-2 rounded-3 bg-success bg-opacity-10 border border-success border-opacity-10 text-center h-100">
+                                <span class="d-block smaller text-muted">Humidity</span>
+                                <span class="fw-bold small text-success">${current?.humidity || '0'}%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-4">
+                        <div class="col-6">
+                            <div class="p-2 rounded-3 bg-warning bg-opacity-10 border border-warning border-opacity-10 text-center h-100">
+                                <span class="d-block smaller text-muted">Rain Chance</span>
+                                <span class="fw-bold small text-warning-emphasis"><i class="bi bi-cloud-rain me-1"></i>${chanceOfRain}</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-2 rounded-3 bg-secondary bg-opacity-10 border border-secondary border-opacity-10 text-center h-100">
+                                <span class="d-block smaller text-muted">Cloud Cover</span>
+                                <span class="fw-bold small text-secondary-emphasis"><i class="bi bi-clouds me-1"></i>${current?.cloudcover || '0'}%</span>
                             </div>
                         </div>
                     </div>
 
                     <a href="https://www.google.com/maps/search/${encodeURIComponent(fullLocation)}" 
                        target="_blank" 
-                       class="location-info p-2 rounded-pill bg-light mb-3 mx-auto d-inline-block px-4 text-decoration-none text-dark hover-link"
+                       class="location-info p-2 rounded-pill bg-light mb-3 mx-auto d-inline-block px-4 text-decoration-none text-dark hover-link border"
                        title="View on Google Maps">
                         <i class="bi bi-geo-alt-fill text-danger me-2"></i>
                         <span class="fw-medium">${fullLocation}</span>
@@ -194,27 +341,36 @@
                     
                     <div class="d-flex justify-content-between px-3 py-2 border-top mt-2">
                         <div class="text-center">
-                            <i class="bi bi-droplets-fill text-info d-block fs-5"></i>
-                            <span class="small fw-bold">${current.humidity}%</span>
-                            <div class="text-muted smaller">Humidity</div>
+                            <i class="bi bi-thermometer-low text-primary d-block"></i>
+                            <span class="smaller fw-bold">${weatherToday?.mintempC || '--'}°C</span>
                         </div>
                         <div class="text-center">
-                            <i class="bi bi-wind text-secondary d-block fs-5"></i>
-                            <span class="small fw-bold">${current.windspeedKmph} km/h</span>
-                            <div class="text-muted smaller">Wind</div>
+                            <i class="bi bi-thermometer-high text-danger d-block"></i>
+                            <span class="smaller fw-bold">${weatherToday?.maxtempC || '--'}°C</span>
                         </div>
                         <div class="text-center">
-                            <i class="bi bi-eye-fill text-warning d-block fs-5"></i>
-                            <span class="small fw-bold">${current.visibility} km</span>
-                            <div class="text-muted smaller">Visibility</div>
+                            <i class="bi bi-wind text-secondary d-block"></i>
+                            <span class="smaller fw-bold">${current?.windspeedKmph || '0'} km/h</span>
                         </div>
+                        <div class="text-center">
+                            <i class="bi bi-eye-fill text-warning d-block"></i>
+                            <span class="smaller fw-bold">${current?.visibility || '0'} km</span>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2">
+                        <span class="smaller text-muted" style="font-size: 0.7rem;">
+                            <i class="bi bi-arrow-repeat me-1"></i>Last updated: ${lastUpdated}
+                        </span>
                     </div>
                 `;
             } catch (error) {
                 content.innerHTML = `
-                    <div class="alert alert-danger py-2 px-3 small rounded-3 mx-2">
-                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                        Could not find weather for "${location}".
+                    <div class="alert alert-danger py-3 px-3 small rounded-4 mx-2 text-center shadow-sm">
+                        <i class="bi bi-exclamation-triangle-fill fs-4 d-block mb-2"></i>
+                        <p class="mb-2">Could not load weather for "${location}".</p>
+                        <button onclick="fetchWeather('${location}')" class="btn btn-danger btn-sm rounded-pill px-4">
+                            <i class="bi bi-arrow-clockwise me-1"></i> Retry
+                        </button>
                     </div>
                 `;
                 console.error('Weather error:', error);
@@ -227,36 +383,74 @@
         }
 
         // --- Currency Logic ---
+        let currencyInfoMap = {};
+
         async function initCurrencies() {
             try {
-                const response = await fetch('https://open.er-api.com/v6/latest/USD');
-                const data = await response.json();
+                // Fetch exchange rates and country info in parallel
+                const [rateRes, countryRes] = await Promise.all([
+                    fetch('https://open.er-api.com/v6/latest/USD'),
+                    fetch('https://restcountries.com/v3.1/all?fields=name,currencies,flags,cca2')
+                ]);
+
+                const rateData = await rateRes.json();
+                const countryData = await countryRes.json();
                 
-                if (data.result === "success") {
-                    const currencies = Object.keys(data.rates).sort();
+                if (rateData.result === "success") {
+                    let currencyOptions = [];
+
+                    // Process country data
+                    countryData.forEach(country => {
+                        if (country.currencies) {
+                            Object.entries(country.currencies).forEach(([code, details]) => {
+                                // Include all countries, even if rate is missing
+                                currencyOptions.push({
+                                    countryName: country.name.common,
+                                    countryCode: country.cca2,
+                                    currencyCode: code,
+                                    currencyName: details.name,
+                                    flag: country.flags.svg,
+                                    // Unique value for select option to prevent jumping
+                                    value: `${code}|${country.cca2}`
+                                });
+
+                                // Store info for display
+                                currencyInfoMap[`${code}|${country.cca2}`] = {
+                                    name: details.name,
+                                    symbol: details.symbol,
+                                    flag: country.flags.svg,
+                                    country: country.name.common
+                                };
+                            });
+                        }
+                    });
+
+                    // Sort by country name
+                    currencyOptions.sort((a, b) => a.countryName.localeCompare(b.countryName));
+
                     const fromSelect = document.getElementById('from-currency');
                     const toSelect = document.getElementById('to-currency');
                     
-                    const fromVal = fromSelect.value;
-                    const toVal = toSelect.value;
-                    
-                    fromSelect.innerHTML = '';
-                    toSelect.innerHTML = '';
-                    
-                    currencies.forEach(curr => {
-                        const opt1 = document.createElement('option');
-                        opt1.value = curr;
-                        opt1.text = curr;
-                        fromSelect.appendChild(opt1);
+                    const populateSelect = (select, defaultCountryCode, defaultCurrencyCode) => {
+                        select.innerHTML = '';
+                        let defaultFound = false;
                         
-                        const opt2 = document.createElement('option');
-                        opt2.value = curr;
-                        opt2.text = curr;
-                        toSelect.appendChild(opt2);
-                    });
-                    
-                    fromSelect.value = fromVal || 'USD';
-                    toSelect.value = toVal || 'INR';
+                        currencyOptions.forEach(opt => {
+                            const option = document.createElement('option');
+                            option.value = opt.value;
+                            option.text = `${opt.countryName} - ${opt.currencyName} (${opt.currencyCode})`;
+                            select.appendChild(option);
+
+                            // auto-select defaults (US for USD, IN for INR)
+                            if (!defaultFound && opt.countryCode === defaultCountryCode && opt.currencyCode === defaultCurrencyCode) {
+                                select.value = opt.value;
+                                defaultFound = true;
+                            }
+                        });
+                    };
+
+                    populateSelect(fromSelect, 'US', 'USD');
+                    populateSelect(toSelect, 'IN', 'INR');
                 }
             } catch (error) {
                 console.error('Failed to load currencies:', error);
@@ -264,67 +458,184 @@
         }
 
         async function convertCurrency() {
-            const amount = document.getElementById('amount').value;
-            const from = document.getElementById('from-currency').value;
-            const to = document.getElementById('to-currency').value;
+            const amountInput = document.getElementById('amount');
+            const amount = amountInput.value || 1;
+            // Value format is "CODE|COUNTRY_CODE"
+            const fromValue = document.getElementById('from-currency').value;
+            const toValue = document.getElementById('to-currency').value;
+            
+            if (!fromValue || !toValue) return;
+
+            const fromCode = fromValue.split('|')[0];
+            const toCode = toValue.split('|')[0];
+            
             const resDiv = document.getElementById('currency-result');
 
-            resDiv.innerHTML = '<span class="small text-muted">Converting...</span>';
+            resDiv.innerHTML = `
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <div class="spinner-border spinner-border-sm text-success" role="status"></div>
+                    <span class="small text-muted">Calculating...</span>
+                </div>
+            `;
 
             try {
-                const response = await fetch(`https://open.er-api.com/v6/latest/${from}`);
+                const response = await fetch(`https://open.er-api.com/v6/latest/${fromCode}`);
                 const data = await response.json();
                 
                 if (data.result === "success") {
-                    const rate = data.rates[to];
-                    const converted = (amount * rate).toFixed(2);
-                    resDiv.innerHTML = `${amount} ${from} = ${converted} ${to}`;
+                    const rate = data.rates[toCode];
+                    
+                    if (rate !== undefined) {
+                        const converted = (amount * rate).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        
+                        const fromInfo = currencyInfoMap[fromValue];
+                        const toInfo = currencyInfoMap[toValue];
+
+                        resDiv.innerHTML = `
+                            <div class="text-start">
+                                <div class="small text-muted mb-1">
+                                    <img src="${fromInfo.flag}" class="flag-icon me-1" style="width: 20px; height: 15px; vertical-align: middle;">
+                                    ${amount} ${fromInfo.country} (${fromCode}) equals
+                                </div>
+                                <div class="h3 fw-bold mb-0">
+                                    <img src="${toInfo.flag}" class="flag-icon me-1" style="width: 30px; height: 22px; vertical-align: baseline;">
+                                    ${converted} ${toInfo.currencyName}
+                                </div>
+                                 <div class="small text-muted mt-1">in ${toInfo.country}</div>
+                            </div>
+                        `;
+                    } else {
+                        resDiv.innerHTML = '<div class="text-warning small text-center"><i class="bi bi-exclamation-circle me-1"></i> Exchange rate unavailable</div>';
+                        console.warn(`Rate not found for ${toCode}`);
+                    }
                 } else {
-                    resDiv.innerHTML = 'Error fetching rates';
+                    resDiv.innerHTML = ''; // Silently fail
+                    console.warn('Error fetching rates');
                 }
             } catch (error) {
-                resDiv.innerHTML = 'Error converting';
+                resDiv.innerHTML = ''; // Silently fail
                 console.error('Currency error:', error);
             }
         }
 
         // --- Time Logic ---
-        function initTimezones() {
-            const select = document.getElementById('timezone-select');
-            // Get all IANA timezones supported by the browser
-            const zones = Intl.supportedValuesOf('timeZone');
-            zones.sort();
+        let currentTargetTimezone = 'UTC';
+        let currentTargetLocationName = 'UTC (GMT)';
+        const searchCache = new Map(); // Cache for search results
 
-            select.innerHTML = '';
-            zones.forEach(tz => {
-                const option = document.createElement('option');
-                option.value = tz;
-                option.text = tz.replace(/_/g, ' '); 
-                select.appendChild(option);
-            });
+        let searchTimeout;
+        async function handleGlobalSearch() {
+            const query = document.getElementById('timezone-search').value.trim();
+            const resultsDiv = document.getElementById('search-results');
             
-            // Try to set local timezone as default
-            const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            if (zones.includes(localTz)) {
-                select.value = localTz;
+            if (query.length < 3) {
+                resultsDiv.classList.add('d-none');
+                return;
+            }
+
+            // Check Cache
+            if (searchCache.has(query.toLowerCase())) {
+                renderSearchResults(searchCache.get(query.toLowerCase()));
+                return;
+            }
+
+            // Debounce
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(async () => {
+                try {
+                    // Single API call for Location + Timezone
+                    const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=5&language=en&format=json`);
+                    const data = await response.json();
+                    
+                    if (!data.results || data.results.length === 0) {
+                        resultsDiv.innerHTML = '<div class="list-group-item small text-muted text-center py-3">No location found</div>';
+                        resultsDiv.classList.remove('d-none');
+                        return;
+                    }
+
+                    // Cache results
+                    searchCache.set(query.toLowerCase(), data.results);
+                    renderSearchResults(data.results);
+
+                } catch (error) {
+                    console.error('Geo search error:', error);
+                }
+            }, 300); 
+        }
+
+        function renderSearchResults(results) {
+            const resultsDiv = document.getElementById('search-results');
+            const input = document.getElementById('timezone-search');
+            
+            // --- Auto-select first result (Optimistic) ---
+            const first = results[0];
+            updateTimezoneFromData(first, false); // Don't update input text yet
+
+            // --- Populate dropdown ---
+            resultsDiv.innerHTML = '';
+            resultsDiv.classList.remove('d-none');
+            
+            results.forEach(item => {
+                const name = item.name;
+                const country = item.country || '';
+                const admin1 = item.admin1 || '';
+                const details = [admin1, country].filter(x => x && x !== name).join(', ');
+                
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'list-group-item list-group-item-action small py-2 px-3 border-0';
+                btn.innerHTML = `
+                    <div class="fw-bold text-start">${name}</div>
+                    <div class="smaller text-muted text-start">${details}</div>
+                `;
+                
+                btn.onclick = () => {
+                    resultsDiv.classList.add('d-none');
+                    input.value = `${name}, ${country}`;
+                    updateTimezoneFromData(item, true);
+                };
+                resultsDiv.appendChild(btn);
+            });
+        }
+
+        function updateTimezoneFromData(item, updateLabel) {
+            if (item.timezone) {
+                currentTargetTimezone = item.timezone;
+                currentTargetLocationName = `${item.name}, ${item.country || ''}`;
+                updateTargetTime();
             }
         }
 
+
+
         function updateTimes() {
             const now = new Date();
-            document.getElementById('local-time').innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('local-time').innerText = now.toLocaleTimeString([], { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            });
             updateTargetTime();
         }
 
         function updateTargetTime() {
-            const select = document.getElementById('timezone-select');
-            const timezone = select.value;
+            const timezone = currentTargetTimezone;
+            const targetTimeDiv = document.getElementById('target-time');
+            const targetDateDiv = document.getElementById('target-date');
+            const relativeDayDiv = document.getElementById('relative-day');
+            const locationDisplay = document.getElementById('target-location-display');
+
+            if (locationDisplay) locationDisplay.innerText = currentTargetLocationName;
+
             if (!timezone) {
-                document.getElementById('target-time').innerText = "-- : -- : --";
+                // ... (fallback)
                 return;
             }
+
             const now = new Date();
             try {
+                // Time
                 const targetTimeStr = now.toLocaleTimeString('en-US', { 
                     timeZone: timezone, 
                     hour: '2-digit', 
@@ -332,18 +643,61 @@
                     second: '2-digit',
                     hour12: true
                 });
-                document.getElementById('target-time').innerText = targetTimeStr;
+                targetTimeDiv.innerText = targetTimeStr;
+
+                // Date
+                const options = { timeZone: timezone, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                const targetDateStr = now.toLocaleDateString('en-US', options);
+                targetDateDiv.innerText = targetDateStr;
+
+                // Relative Day logic
+                const localDateStr = now.toLocaleDateString('en-US');
+                const targetDateSimpleStr = now.toLocaleDateString('en-US', { timeZone: timezone });
+                
+                const localDate = new Date(localDateStr);
+                const targetDate = new Date(targetDateSimpleStr);
+                
+                const diffTime = targetDate - localDate;
+                const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+                relativeDayDiv.className = 'badge rounded-pill mt-2';
+                if (diffDays === 0) {
+                    relativeDayDiv.innerText = "";
+                } else if (diffDays > 0) {
+                    relativeDayDiv.innerText = "Tomorrow";
+                    relativeDayDiv.classList.add('badge-tomorrow');
+                } else { // diffDays < 0
+                    relativeDayDiv.innerText = "Yesterday";
+                    relativeDayDiv.classList.add('badge-yesterday');
+                }
+
             } catch (e) {
-                document.getElementById('target-time').innerText = "Error";
+                targetTimeDiv.innerText = "Error";
+                targetDateDiv.innerText = "";
+                relativeDayDiv.innerText = "";
             }
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            fetchWeather(); // Default location
+            detectLocationAndFetchWeather(); // Detect and fetch
             initCurrencies();
-            initTimezones();
+            // initTimezones(); REMOVED
             window.timeUpdateInterval = setInterval(updateTimes, 1000);
+            
+            // Auto-refresh weather every 10 minutes ONLY if we have a location
+            if (window.weatherRefreshInterval) clearInterval(window.weatherRefreshInterval);
+            window.weatherRefreshInterval = setInterval(() => {
+                const currentLoc = document.querySelector('.location-info .fw-medium')?.innerText;
+                if (currentLoc) {
+                    // Refresh current displayed location
+                    fetchWeather(currentLoc);
+                } else {
+                    // Try to re-detect if nothing is shown
+                    detectLocationAndFetchWeather();
+                }
+            }, 10 * 60 * 1000);
+            
             updateTimes();
             // Initial conversion delayed slightly to allow currencies to load
             setTimeout(convertCurrency, 1000);

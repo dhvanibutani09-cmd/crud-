@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Verify Add User OTP" xml:space="preserve"><value>వినియోగదారు జోడింపు OTPని ధృవీకరించండి</value></data>
+  <data name="Signing up as:" xml:space="preserve"><value>గా సైన్ అప్ అవుతున్నారు:</value></data>
+  <data name="Please enter the 6-digit code sent to your email." xml:space="preserve"><value>దయచేసి మీ ఈమెయిల్‌కు పంపిన 6-అంకెల కోడ్‌ను నమోదు చేయండి।</value></data>
+  <data name="Check your email for the code." xml:space="preserve"><value>కోడ్ కోసం మీ ఈమెయిల్‌ని తనిఖీ చేయండి।</value></data>
+  <data name="OTP Code" xml:space="preserve"><value>OTP కోడ్</value></data>
+  <data name="Enter 6-digit OTP" xml:space="preserve"><value>6-అంకెల OTPని నమోదు చేయండి</value></data>
+  <data name="Verify &amp; Add User" xml:space="preserve"><value>ధృవీకరించండి &amp; వినియోగదారుని జోడించండి</value></data>
+  <data name="Back to Signup" xml:space="preserve"><value>సైన్ అప్‌కు తిరిగి వెళ్లండి</value></data>
+</root>

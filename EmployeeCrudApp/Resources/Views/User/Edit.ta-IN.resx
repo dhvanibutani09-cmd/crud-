@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Edit User" xml:space="preserve"><value>பயனரைத் திருத்தவும்</value></data>
+  <data name="Update User Information" xml:space="preserve"><value>பயனர் தகவலைப் புதுப்பிக்கவும்</value></data>
+  <data name="Full Name" xml:space="preserve"><value>முழு பெயர்</value></data>
+  <data name="Email Address" xml:space="preserve"><value>மின்னஞ்சல் முகவரி</value></data>
+  <data name="Password" xml:space="preserve"><value>கடவுச்சொல்</value></data>
+  <data name="Save Changes" xml:space="preserve"><value>மாற்றங்களைச் சேமிக்கவும்</value></data>
+  <data name="Cancel" xml:space="preserve"><value>ரத்து செய்</value></data>
+</root>

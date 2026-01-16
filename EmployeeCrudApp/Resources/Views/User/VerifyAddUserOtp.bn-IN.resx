@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Verify Add User OTP" xml:space="preserve"><value>ব্যবহারকারী যোগ ওটিপি যাচাই করুন</value></data>
+  <data name="Signing up as:" xml:space="preserve"><value>হিসেবে সাইন আপ করছেন:</value></data>
+  <data name="Please enter the 6-digit code sent to your email." xml:space="preserve"><value>আপনার ইমেলে পাঠানো ৬-সংখ্যার কোডটি প্রবেশ করান।</value></data>
+  <data name="Check your email for the code." xml:space="preserve"><value>কোডের জন্য আপনার ইমেল চেক করুন।</value></data>
+  <data name="OTP Code" xml:space="preserve"><value>ওটিপি কোড</value></data>
+  <data name="Enter 6-digit OTP" xml:space="preserve"><value>৬-সংখ্যার ওটিপি লিখুন</value></data>
+  <data name="Verify &amp; Add User" xml:space="preserve"><value>যাচাই করুন এবং ব্যবহারকারী যোগ করুন</value></data>
+  <data name="Back to Signup" xml:space="preserve"><value>সাইন আপে ফিরে যান</value></data>
+</root>

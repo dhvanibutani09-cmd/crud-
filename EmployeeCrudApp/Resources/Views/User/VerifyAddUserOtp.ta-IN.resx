@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Verify Add User OTP" xml:space="preserve"><value>பயனர் சேர்க்கும் OTP-ஐச் சரிபார்க்கவும்</value></data>
+  <data name="Signing up as:" xml:space="preserve"><value>எனப் பதிவு செய்கிறீர்கள்:</value></data>
+  <data name="Please enter the 6-digit code sent to your email." xml:space="preserve"><value>உங்கள் மின்னஞ்சலுக்கு அனுப்பப்பட்ட 6 இலக்கக் குறியீட்டை உள்ளிடவும்.</value></data>
+  <data name="Check your email for the code." xml:space="preserve"><value>குறியீட்டிற்கு உங்கள் மின்னஞ்சலைச் சரிபார்க்கவும்.</value></data>
+  <data name="OTP Code" xml:space="preserve"><value>OTP குறியீடு</value></data>
+  <data name="Enter 6-digit OTP" xml:space="preserve"><value>6 இலக்க OTP-ஐ உள்ளிடவும்</value></data>
+  <data name="Verify &amp; Add User" xml:space="preserve"><value>சரிபார்த்து பயனரைச் சேர்க்கவும்</value></data>
+  <data name="Back to Signup" xml:space="preserve"><value>பதிவுப்பக்கத்திற்குத் திரும்பு</value></data>
+</root>

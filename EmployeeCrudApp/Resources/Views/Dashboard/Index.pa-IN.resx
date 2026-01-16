@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Dashboard" xml:space="preserve"><value>ਡੈਸ਼ਬੋਰਡ</value></data>
+  <data name="Welcome" xml:space="preserve"><value>ਸੁਆਗਤ ਹੈ</value></data>
+  <data name="Manage Users" xml:space="preserve"><value>ਉਪਭੋਗਤਾਵਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ</value></data>
+  <data name="Weather Details" xml:space="preserve"><value>ਮੌਸਮ ਦੇ ਵੇਰਵੇ</value></data>
+  <data name="Loading..." xml:space="preserve"><value>ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...</value></data>
+  <data name="Enter city, town, or country..." xml:space="preserve"><value>ਸ਼ਹਿਰ ਜਾਂ ਦੇਸ਼ ਦਰਜ ਕਰੋ...</value></data>
+  <data name="Currency Conversion" xml:space="preserve"><value>ਮੁਦਰਾ ਪਰਿਵਰਤਨ</value></data>
+  <data name="Amount" xml:space="preserve"><value>ਰਕਮ</value></data>
+  <data name="Convert" xml:space="preserve"><value>ਬਦਲੋ</value></data>
+  <data name="Time Conversion" xml:space="preserve"><value>ਸਮਾਂ ਪਰਿਵਰਤਨ</value></data>
+  <data name="Current Local Time" xml:space="preserve"><value>ਮੌਜੂਦਾ ਸਥਾਨਕ ਸਮਾਂ</value></data>
+  <data name="Search country, city, or village..." xml:space="preserve"><value>ਦੇਸ਼, ਸ਼ਹਿਰ ਜਾਂ ਪਿੰਡ ਦੀ ਖੋਜ ਕਰੋ...</value></data>
+  <data name="Headlines" xml:space="preserve"><value>ਮੁੱਖ ਖ਼ਬਰਾਂ</value></data>
+  <data name="Search..." xml:space="preserve"><value>ਖੋਜੋ...</value></data>
+  <data name="Fetching news..." xml:space="preserve"><value>ਖ਼ਬਰਾਂ ਲਿਆਂਦੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ...</value></data>
+  <data name="Detecting location..." xml:space="preserve"><value>ਸਥਾਨ ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...</value></data>
+  <data name="Please allow GPS access if prompted." xml:space="preserve"><value>ਜੇਕਰ ਪੁੱਛਿਆ ਜਾਵੇ ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ GPS ਪਹੁੰਚ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।</value></data>
+  <data name="Location access denied." xml:space="preserve"><value>ਸਥਾਨ ਤੱਕ ਪਹੁੰਚ ਤੋਂ ਇਨਕਾਰ।</value></data>
+  <data name="Please search for your city manually above." xml:space="preserve"><value>ਕਿਰਪਾ ਕਰਕੇ ਉੱਪਰ ਆਪਣੇ ਸ਼ਹਿਰ ਦੀ ਹੱਥੀਂ ਖੋਜ ਕਰੋ।</value></data>
+  <data name="Geolocation not supported." xml:space="preserve"><value>ਜੀਓਲੋਕੇਸ਼ਨ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ।</value></data>
+  <data name="Ready to search." xml:space="preserve"><value>ਖੋਜ ਲਈ ਤਿਆਰ।</value></data>
+  <data name="Enter a city to see the weather." xml:space="preserve"><value>ਮੌਸਮ ਦੇਖਣ ਲਈ ਸ਼ਹਿਰ ਦਰਜ ਕਰੋ।</value></data>
+  <data name="Fetching weather data..." xml:space="preserve"><value>ਮੌਸਮ ਦਾ ਡਾਟਾ ਲਿਆਂਦਾ ਜਾ ਰਿਹਾ ਹੈ...</value></data>
+  <data name="Current Location" xml:space="preserve"><value>ਮੌਜੂਦਾ ਸਥਾਨ</value></data>
+  <data name="Unknown" xml:space="preserve"><value>ਅਣਜਾਣ</value></data>
+  <data name="Accurate Celsius" xml:space="preserve"><value>ਸਹੀ ਸੈਲਸੀਅਸ</value></data>
+  <data name="RealFeel" xml:space="preserve"><value>ਰੀਅਲਫੀਲ</value></data>
+  <data name="Sunrise" xml:space="preserve"><value>ਸੂਰਜ ਚੜ੍ਹਨਾ</value></data>
+  <data name="Sunset" xml:space="preserve"><value>ਸੂਰਜ ਡੁੱਬਣਾ</value></data>
+  <data name="UV Index" xml:space="preserve"><value>ਯੂਵੀ ਇੰਡੈਕਸ</value></data>
+  <data name="Pressure" xml:space="preserve"><value>ਦਬਾਅ</value></data>
+  <data name="Humidity" xml:space="preserve"><value>ਨਮੀ</value></data>
+  <data name="Rain Chance" xml:space="preserve"><value>ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ</value></data>
+  <data name="Cloud Cover" xml:space="preserve"><value>ਬੱਦਲਵਾਈ</value></data>
+  <data name="View on Google Maps" xml:space="preserve"><value>Google ਨਕਸ਼ੇ 'ਤੇ ਦੇਖੋ</value></data>
+  <data name="km/h" xml:space="preserve"><value>ਕਿਮੀ/ਘੰਟਾ</value></data>
+  <data name="km" xml:space="preserve"><value>ਕਿਮੀ</value></data>
+  <data name="Last updated:" xml:space="preserve"><value>ਆਖਰੀ ਅੱਪਡੇਟ:</value></data>
+  <data name="Could not load weather for" xml:space="preserve"><value>ਮੌਸਮ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕਿਆ:</value></data>
+  <data name="Retry" xml:space="preserve"><value>ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ</value></data>
+  <data name="Calculating..." xml:space="preserve"><value>ਗਣਨਾ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ...</value></data>
+  <data name="equals" xml:space="preserve"><value>ਬਰਾਬਰ</value></data>
+  <data name="in" xml:space="preserve"><value>ਵਿੱਚ</value></data>
+  <data name="Exchange rate unavailable" xml:space="preserve"><value>ਵਟਾਂਦਰਾ ਦਰ ਉਪਲਬਧ ਨਹੀਂ ਹੈ</value></data>
+  <data name="No location found" xml:space="preserve"><value>ਕੋਈ ਸਥਾਨ ਨਹੀਂ ਮਿਲਿਆ</value></data>
+  <data name="Tomorrow" xml:space="preserve"><value>ਕੱਲ੍ਹ</value></data>
+  <data name="Yesterday" xml:space="preserve"><value>ਕੱਲ੍ਹ (ਬੀਤੇ)</value></data>
+  <data name="Error" xml:space="preserve"><value>ਗਲਤੀ</value></data>
+  <data name="Fetching" xml:space="preserve"><value>ਲਿਆਂਦਾ ਜਾ ਰਿਹਾ ਹੈ</value></data>
+  <data name="search results" xml:space="preserve"><value>ਖੋਜ ਨਤੀਜੇ</value></data>
+  <data name="latest updates" xml:space="preserve"><value>ਤਾਜ਼ਾ ਅੱਪਡੇਟ</value></data>
+  <data name="No results." xml:space="preserve"><value>ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ।</value></data>
+  <data name="Clear" xml:space="preserve"><value>ਸਾਫ਼ ਕਰੋ</value></data>
+  <data name="Previous" xml:space="preserve"><value>ਪਿਛਲਾ</value></data>
+  <data name="Next" xml:space="preserve"><value>ਅਗਲਾ</value></data>
+  <data name="Unable to load news." xml:space="preserve"><value>ਖ਼ਬਰਾਂ ਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਮರ್ಥ।</value></data>
+  <data name="Personal Notes" xml:space="preserve"><value>ਨਿੱਜੀ ਨੋਟਸ</value></data>
+  <data name="Capture your thoughts" xml:space="preserve"><value>ਆਪਣੇ ਵਿਚਾਰ ਦਰਜ ਕਰੋ</value></data>
+  <data name="Add Note" xml:space="preserve"><value>ਨੋਟ ਜੋੜੋ</value></data>
+  <data name="Add New Note" xml:space="preserve"><value>ਨਵਾਂ ਨੋਟ ਜੋੜੋ</value></data>
+  <data name="Edit Note" xml:space="preserve"><value>ਨੋਟ ਸੋਧੋ</value></data>
+  <data name="Save Note" xml:space="preserve"><value>ਨੋਟ ਸੇਵ ਕਰੋ</value></data>
+  <data name="Save Changes" xml:space="preserve"><value>ਤਬਦੀਲੀਆਂ ਸੇਵ ਕਰੋ</value></data>
+  <data name="Cancel" xml:space="preserve"><value>ਰੱਦ ਕਰੋ</value></data>
+  <data name="Type your note here..." xml:space="preserve"><value>ਆਪਣਾ ਨੋਟ ਇੱਥੇ ਟਾਈਪ ਕਰੋ...</value></data>
+  <data name="No notes yet. Click 'Add Note' to start writing." xml:space="preserve"><value>ਅਜੇ ਕੋਈ ਨੋਟ ਨਹੀਂ ਹੈ। ਲਿਖਣਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ 'ਨੋਟ ਜੋੜੋ' 'ਤੇ ਕਲਿੱਕ ਕਰੋ।</value></data>
+  <data name="Are you sure you want to delete this note?" xml:space="preserve"><value>ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਤੌਰ 'ਤੇ ਇਸ ਨੋਟ ਨੂੰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?</value></data>
+  <data name="Real-time climate" xml:space="preserve"><value>ਰੀਅਲ-ਟਾਈਮ ਜਲਵਾਯੂ</value></data>
+  <data name="Global exchange rates" xml:space="preserve"><value>ਗਲੋਬਲ ਐਕਸਚੇਂਜ ਦਰਾਂ</value></data>
+  <data name="World clock" xml:space="preserve"><value>ਵਿਸ਼ਵ ਘੜੀ</value></data>
+  <data name="Latest world updates" xml:space="preserve"><value>ਨਵੀਨਤਮ ਵਿਸ਼ਵ ਅਪਡੇਟਸ</value></data>
+  <data name="Search city..." xml:space="preserve"><value>ਸ਼ਹਿਰ ਦੀ ਖੋਜ ਕਰੋ...</value></data>
+  <data name="Search news..." xml:space="preserve"><value>ਖ਼ਬਰਾਂ ਦੀ ਖੋਜ ਕਰੋ...</value></data>
+</root>

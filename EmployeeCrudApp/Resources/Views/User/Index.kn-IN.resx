@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="User Management" xml:space="preserve"><value>ಬಳಕೆದಾರರ ನಿರ್ವಹಣೆ</value></data>
+  <data name="Manage system access and account statuses" xml:space="preserve"><value>ಸಿಸ್ಟಮ್ ಪ್ರವೇಶ ಮತ್ತು ಖಾತೆ ಸ್ಥಿತಿಗಳನ್ನು ನಿರ್ವಹಿಸಿ</value></data>
+  <data name="Add User" xml:space="preserve"><value>ಬಳಕೆದಾರರನ್ನು ಸೇರಿಸಿ</value></data>
+  <data name="Dashboard" xml:space="preserve"><value>ಡ್ಯಾಶ್‌ಬೋರ್ಡ್</value></data>
+  <data name="User Details" xml:space="preserve"><value>ಬಳಕೆದಾರರ ವಿವರಗಳು</value></data>
+  <data name="Email Address" xml:space="preserve"><value>ಇಮೇಲ್ ವಿಳಾಸ</value></data>
+  <data name="Account Status" xml:space="preserve"><value>ಖಾತೆಯ ಸ್ಥಿತಿ</value></data>
+  <data name="Actions" xml:space="preserve"><value>ಕ್ರಮಗಳು</value></data>
+  <data name="Verified" xml:space="preserve"><value>ಪರಿಶೀಲಿಸಲಾಗಿದೆ</value></data>
+  <data name="Pending" xml:space="preserve"><value>ಬಾಕಿ ಇದೆ</value></data>
+  <data name="Details" xml:space="preserve"><value>ವಿವರಗಳು</value></data>
+  <data name="View" xml:space="preserve"><value>ವೀಕ್ಷಿಸಿ</value></data>
+  <data name="Edit" xml:space="preserve"><value>ಸಂಪಾದಿಸಿ</value></data>
+  <data name="Delete" xml:space="preserve"><value>ಅಳಿಸಿ</value></data>
+  <data name="No users found in the system." xml:space="preserve"><value>ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಯಾವುದೇ ಬಳಕೆದಾರರು ಕಂಡುಬಂದಿಲ್ಲ.</value></data>
+</root>

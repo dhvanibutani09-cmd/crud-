@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Delete User" xml:space="preserve"><value>ഉപയോക്താവിനെ നീക്കം ചെയ്യുക</value></data>
+  <data name="Are you sure you want to delete this user?" xml:space="preserve"><value>ഈ ഉപയോക്താവിനെ നീക്കം ചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?</value></data>
+  <data name="This action cannot be undone." xml:space="preserve"><value>ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല.</value></data>
+  <data name="User Details" xml:space="preserve"><value>ഉപയോക്തൃ വിവരങ്ങൾ</value></data>
+  <data name="Full Name" xml:space="preserve"><value>പൂർണ്ണനാമം</value></data>
+  <data name="Email" xml:space="preserve"><value>ഇമെയിൽ വിലാസം</value></data>
+  <data name="Confirm Delete" xml:space="preserve"><value>നീക്കം ചെയ്യുന്നത് സ്ഥിരീകരിക്കുക</value></data>
+  <data name="Back to List" xml:space="preserve"><value>പട്ടികയിലേക്ക് തിരികെ പോകുക</value></data>
+</root>

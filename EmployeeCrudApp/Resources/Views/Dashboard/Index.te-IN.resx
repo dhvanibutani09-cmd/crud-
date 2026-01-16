@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Dashboard" xml:space="preserve"><value>డాష్‌బోర్డ్</value></data>
+  <data name="Welcome" xml:space="preserve"><value>స్వాగతం</value></data>
+  <data name="Manage Users" xml:space="preserve"><value>వినియోగదారులను నిర్వహించండి</value></data>
+  <data name="Weather Details" xml:space="preserve"><value>వాతావరణ వివరాలు</value></data>
+  <data name="Loading..." xml:space="preserve"><value>లోడ్ అవుతోంది...</value></data>
+  <data name="Enter city, town, or country..." xml:space="preserve"><value>నగరం, పట్టణం లేదా దేశాన్ని నమోదు చేయండి...</value></data>
+  <data name="Currency Conversion" xml:space="preserve"><value>కరెన్సీ మార్పిడి</value></data>
+  <data name="Amount" xml:space="preserve"><value>మొత్తం</value></data>
+  <data name="Convert" xml:space="preserve"><value>మార్చు</value></data>
+  <data name="Time Conversion" xml:space="preserve"><value>సమయ మార్పిడి</value></data>
+  <data name="Current Local Time" xml:space="preserve"><value>ప్రస్తుత స్థానిక సమయం</value></data>
+  <data name="Search country, city, or village..." xml:space="preserve"><value>దేశం, నగరం లేదా గ్రామం కోసం వెతకండి...</value></data>
+  <data name="Headlines" xml:space="preserve"><value>ముఖ్యాంశాలు</value></data>
+  <data name="Search..." xml:space="preserve"><value>వెతకండి...</value></data>
+  <data name="Fetching news..." xml:space="preserve"><value>వార్తలను పొందుతోంది...</value></data>
+  <data name="Detecting location..." xml:space="preserve"><value>స్థానాన్ని గుర్తిస్తోంది...</value></data>
+  <data name="Please allow GPS access if prompted." xml:space="preserve"><value>అడిగితే దయచేసి GPS యాక్సెస్‌ను అనుమతించండి.</value></data>
+  <data name="Location access denied." xml:space="preserve"><value>స్థాన ప్రాప్తి నిరాకరించబడింది.</value></data>
+  <data name="Please search for your city manually above." xml:space="preserve"><value>దయచేసి పైన మీ నగరాన్ని మాన్యువల్‌గా వెతకండి.</value></data>
+  <data name="Geolocation not supported." xml:space="preserve"><value>జియోలొకేషన్ సపోర్ట్ చేయదు.</value></data>
+  <data name="Ready to search." xml:space="preserve"><value>వెతకడానికి సిద్ధంగా ఉంది.</value></data>
+  <data name="Enter a city to see the weather." xml:space="preserve"><value>వాతావరణాన్ని చూడటానికి నగరాన్ని నమోదు చేయండి.</value></data>
+  <data name="Fetching weather data..." xml:space="preserve"><value>వాతావరణ డేటాను పొందుతోంది...</value></data>
+  <data name="Current Location" xml:space="preserve"><value>ప్రస్తుత స్థానం</value></data>
+  <data name="Unknown" xml:space="preserve"><value>తెలియదు</value></data>
+  <data name="Accurate Celsius" xml:space="preserve"><value>ఖచ్చితమైన సెల్సియస్</value></data>
+  <data name="RealFeel" xml:space="preserve"><value>రియల్‌ఫీల్</value></data>
+  <data name="Sunrise" xml:space="preserve"><value>సూర్యోదయం</value></data>
+  <data name="Sunset" xml:space="preserve"><value>సూర్యాస్తమయం</value></data>
+  <data name="UV Index" xml:space="preserve"><value>UV సూచిక</value></data>
+  <data name="Pressure" xml:space="preserve"><value>పీడనం</value></data>
+  <data name="Humidity" xml:space="preserve"><value>తేమ</value></data>
+  <data name="Rain Chance" xml:space="preserve"><value>వర్షం అవకాశం</value></data>
+  <data name="Cloud Cover" xml:space="preserve"><value>మేఘావృతం</value></data>
+  <data name="View on Google Maps" xml:space="preserve"><value>Google మ్యాప్స్‌లో చూడండి</value></data>
+  <data name="km/h" xml:space="preserve"><value>కిమీ/గం</value></data>
+  <data name="km" xml:space="preserve"><value>కిమీ</value></data>
+  <data name="Last updated:" xml:space="preserve"><value>చివరిసారిగా నవీకరించబడింది:</value></data>
+  <data name="Could not load weather for" xml:space="preserve"><value>దీనికి వాతావరణాన్ని లోడ్ చేయడం సాధ్యపడలేదు:</value></data>
+  <data name="Retry" xml:space="preserve"><value>మళ్ళీ ప్రయత్నించు</value></data>
+  <data name="Calculating..." xml:space="preserve"><value>గణిస్తోంది...</value></data>
+  <data name="equals" xml:space="preserve"><value>సమానం</value></data>
+  <data name="in" xml:space="preserve"><value>లో</value></data>
+  <data name="Exchange rate unavailable" xml:space="preserve"><value>మార్పిడి రేటు అందుబాటులో లేదు</value></data>
+  <data name="No location found" xml:space="preserve"><value>స్థానం కనుగొనబడలేదు</value></data>
+  <data name="Tomorrow" xml:space="preserve"><value>రేపు</value></data>
+  <data name="Yesterday" xml:space="preserve"><value>నిన్న</value></data>
+  <data name="Error" xml:space="preserve"><value>లోపం</value></data>
+  <data name="Fetching" xml:space="preserve"><value>పొందుతోంది</value></data>
+  <data name="search results" xml:space="preserve"><value>శోధన ఫలితాలు</value></data>
+  <data name="latest updates" xml:space="preserve"><value>తాజా అప్‌డేట్‌లు</value></data>
+  <data name="No results." xml:space="preserve"><value>ఫలితాలు లేవు.</value></data>
+  <data name="Clear" xml:space="preserve"><value>క్లియర్</value></data>
+  <data name="Previous" xml:space="preserve"><value>మునుపటి</value></data>
+  <data name="Next" xml:space="preserve"><value>తరువాతి</value></data>
+  <data name="Unable to load news." xml:space="preserve"><value>వార్తలను లోడ్ చేయడం సాధ్యపడలేదు.</value></data>
+  <data name="Personal Notes" xml:space="preserve"><value>వ్యక్తిగత గమనికలు</value></data>
+  <data name="Capture your thoughts" xml:space="preserve"><value>మీ ఆలోచనలను వ్రాయండి</value></data>
+  <data name="Add Note" xml:space="preserve"><value>గమనికను జోడించండి</value></data>
+  <data name="Add New Note" xml:space="preserve"><value>కొత్త గమనికను జోడించండి</value></data>
+  <data name="Edit Note" xml:space="preserve"><value>గమనికను సవరించండి</value></data>
+  <data name="Save Note" xml:space="preserve"><value>గమనికను సేవ్ చేయండి</value></data>
+  <data name="Save Changes" xml:space="preserve"><value>మార్పులను సేవ్ చేయండి</value></data>
+  <data name="Cancel" xml:space="preserve"><value>రద్దు చేయండి</value></data>
+  <data name="Type your note here..." xml:space="preserve"><value>మీ గమనికను ఇక్కడ వ్రాయండి...</value></data>
+  <data name="No notes yet. Click 'Add Note' to start writing." xml:space="preserve"><value>ఇంకా గమనికలు లేవు. వ్రాయడం ప్రారంభించడానికి 'గమనికను జోడించండి' క్లిక్ చేయండి.</value></data>
+  <data name="Are you sure you want to delete this note?" xml:space="preserve"><value>మీరు నిజంగా ఈ గమనికను తొలగించాలనుకుంటున్నారా?</value></data>
+  <data name="Real-time climate" xml:space="preserve"><value>నిజ-సమయ వాతావరణం</value></data>
+  <data name="Global exchange rates" xml:space="preserve"><value>ప్రపంచ మార్పిడి రేట్లు</value></data>
+  <data name="World clock" xml:space="preserve"><value>ప్రపంచ గడియారం</value></data>
+  <data name="Latest world updates" xml:space="preserve"><value>తాజా ప్రపంచ అప్‌డేట్‌లు</value></data>
+  <data name="Search city..." xml:space="preserve"><value>నగరాన్ని శోధించండి...</value></data>
+  <data name="Search news..." xml:space="preserve"><value>వార్తలను శోధించండి...</value></data>
+</root>

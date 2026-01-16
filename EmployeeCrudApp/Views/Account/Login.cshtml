@@ -1,7 +1,9 @@
 @model EmployeeCrudApp.Models.LoginViewModel
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = Localizer["Login"];
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
@@ -9,29 +11,29 @@
 
 <div class="card shadow-sm" style="width: 100%; max-width: 400px;">
     <div class="card-body">
-        <h2 class="text-center mb-4">Login</h2>
+        <h2 class="text-center mb-4">@Localizer["Login"]</h2>
         <section>
             <form asp-action="Login" method="post" autocomplete="off">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 
                 <div class="form-group mb-3">
-                    <label asp-for="Email" class="control-label">Email</label>
-                    <input asp-for="Email" class="form-control" placeholder="enter email" autocomplete="off" />
+                    <label asp-for="Email" class="control-label">@Localizer["Email"]</label>
+                    <input asp-for="Email" class="form-control" placeholder="@Localizer["enter email"]" autocomplete="off" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 
                 <div class="form-group mb-3">
-                    <label asp-for="Password" class="control-label">Password</label>
-                    <input asp-for="Password" class="form-control" placeholder="enter password" autocomplete="off" />
+                    <label asp-for="Password" class="control-label">@Localizer["Password"]</label>
+                    <input asp-for="Password" class="form-control" placeholder="@Localizer["enter password"]" autocomplete="off" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 
                 <div class="form-group d-grid mb-3">
-                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                    <button type="submit" class="btn btn-primary btn-block">@Localizer["Log in"]</button>
                     <div class="text-center mt-2">
-                        <a asp-action="ForgotPassword" class="btn btn-link">Forgot Password?</a>
+                        <a asp-action="ForgotPassword" class="btn btn-link">@Localizer["Forgot Password?"]</a>
                         <span class="text-muted mx-1">|</span>
-                        <a asp-action="Signup" class="btn btn-link">Sign up</a>
+                        <a asp-action="Signup" class="btn btn-link">@Localizer["Sign up"]</a>
                     </div>
                 </div>
             </form>

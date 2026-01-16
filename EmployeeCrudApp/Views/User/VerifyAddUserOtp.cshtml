@@ -1,5 +1,7 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Verify User OTP";
+    ViewData["Title"] = Localizer["Verify User OTP"];
 }
 
 <div class="container mt-5">
@@ -7,10 +9,10 @@
         <div class="col-md-6">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    <h3 class="card-title mb-0">Verify OTP</h3>
+                    <h3 class="card-title mb-0">@Localizer["Verify OTP"]</h3>
                 </div>
                 <div class="card-body">
-                    <p class="text-center">Please enter the OTP sent to the new user's email address to verify the account.</p>
+                    <p class="text-center">@Localizer["Please enter the OTP sent to the new user's email address to verify the account."]</p>
                     
                     @if (!ViewData.ModelState.IsValid)
                     {
@@ -21,13 +23,13 @@
 
                     <form asp-action="VerifyAddUserOtp" method="post">
                         <div class="form-group mb-3">
-                            <label for="otp" class="form-label">OTP Code</label>
-                            <input type="text" name="otp" id="otp" class="form-control" placeholder="Enter 6-digit OTP" required maxlength="6" autocomplete="off" />
+                            <label for="otp" class="form-label">@Localizer["OTP Code"]</label>
+                            <input type="text" name="otp" id="otp" class="form-control" placeholder="@Localizer["Enter 6-digit OTP"]" required maxlength="6" autocomplete="off" />
                         </div>
                         
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Verify User</button>
-                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">@Localizer["Verify User"]</button>
+                            <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
                         </div>
                     </form>
                 </div>

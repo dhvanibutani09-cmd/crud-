@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Sign up" xml:space="preserve"><value>பதிவு செய்யவும்</value></data>
+  <data name="Full Name" xml:space="preserve"><value>முழு பெயர்</value></data>
+  <data name="Email Address" xml:space="preserve"><value>மின்னஞ்சல் முகவரி</value></data>
+  <data name="Password" xml:space="preserve"><value>கடவுச்சொல்</value></data>
+  <data name="Confirm Password" xml:space="preserve"><value>கடவுச்சொல்லை உறுதிப்படுத்தவும்</value></data>
+  <data name="Sign Up" xml:space="preserve"><value>பதிவு செய்யவும்</value></data>
+  <data name="Already have an account?" xml:space="preserve"><value>ஏற்கனவே கணக்கு உள்ளதா?</value></data>
+  <data name="Login" xml:space="preserve"><value>உள்நுழை</value></data>
+</root>

@@ -1,7 +1,9 @@
 @model EmployeeCrudApp.Models.User
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "User Details";
+    ViewData["Title"] = Localizer["User Details"];
 }
 
 <div class="row justify-content-center mt-5 text-white">
@@ -16,36 +18,36 @@
             </div>
             
             <div class="card-body p-4">
-                <h6 class="text-uppercase text-muted fw-bold small ls-1 mb-3">Account Information</h6>
+                <h6 class="text-uppercase text-muted fw-bold small ls-1 mb-3">@Localizer["Account Information"]</h6>
                 
                 <div class="row g-3 mb-4">
                     <div class="col-sm-6">
                         <div class="p-3 rounded-3 bg-white bg-opacity-5 h-100">
-                            <span class="d-block small text-white-50 mb-1">User ID</span>
+                            <span class="d-block small text-white-50 mb-1">@Localizer["User ID"]</span>
                             <span class="fw-bold fs-5">#@Model.Id</span>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="p-3 rounded-3 bg-white bg-opacity-5 h-100">
-                            <span class="d-block small text-white-50 mb-1">Verification Status</span>
+                            <span class="d-block small text-white-50 mb-1">@Localizer["Verification Status"]</span>
                             @if (Model.IsEmailVerified)
                             {
-                                <span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Verified</span>
+                                <span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> @Localizer["Verified"]</span>
                             }
                             else
                             {
-                                <span class="text-warning fw-bold"><i class="bi bi-clock-fill me-1"></i> Pending</span>
+                                <span class="text-warning fw-bold"><i class="bi bi-clock-fill me-1"></i> @Localizer["Pending"]</span>
                             }
                         </div>
                     </div>
                 </div>
 
                 <div class="p-3 rounded-3 bg-white bg-opacity-5 mb-4">
-                    <span class="d-block small text-white-50 mb-1">Password</span>
-                    <span class="font-monospace">@Model.Password</span> <span class="badge bg-secondary ms-2">Plain Text</span>
+                    <span class="d-block small text-white-50 mb-1">@Localizer["Password"]</span>
+                    <span class="font-monospace">@Model.Password</span> <span class="badge bg-secondary ms-2">@Localizer["Plain Text"]</span>
                 </div>
 
-                <h6 class="text-uppercase text-muted fw-bold small ls-1 mb-3">Security & OTP</h6>
+                <h6 class="text-uppercase text-muted fw-bold small ls-1 mb-3">@Localizer["Security & OTP"]</h6>
                 
                 @if (!string.IsNullOrEmpty(Model.Otp))
                 {
@@ -53,13 +55,13 @@
                         <div class="d-flex align-items-center mb-2">
                             <i class="bi bi-shield-lock-fill fs-4 me-3"></i>
                             <div>
-                                <div class="small text-white-50">Active One-Time Password</div>
+                                <div class="small text-white-50">@Localizer["Active One-Time Password"]</div>
                                 <div class="fw-bold fs-5 font-monospace">@Model.Otp</div>
                             </div>
                         </div>
                         <hr class="border-white border-opacity-25 my-2">
                         <div class="d-flex justify-content-between small">
-                            <span class="text-white-50">Expires at:</span>
+                            <span class="text-white-50">@Localizer["Expires at:"]</span>
                             <span class="fw-bold">@Model.OtpExpiry?.ToString("MMM dd, yyyy HH:mm:ss")</span>
                         </div>
                     </div>
@@ -68,17 +70,17 @@
                 {
                     <div class="text-center p-4 rounded-3 border border-white border-opacity-10 border-dashed text-white-50">
                         <i class="bi bi-shield-check fs-2 d-block mb-2 opacity-50"></i>
-                        No active security codes
+                        @Localizer["No active security codes"]
                     </div>
                 }
 
                 <div class="d-grid gap-2 mt-4 pt-4 border-top border-white border-opacity-10">
                     <div class="row g-2">
                         <div class="col-6">
-                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-light w-100 rounded-pill">Edit Profile</a>
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-light w-100 rounded-pill">@Localizer["Edit Profile"]</a>
                         </div>
                         <div class="col-6">
-                            <a asp-action="Index" class="btn btn-primary w-100 rounded-pill">Back to List</a>
+                            <a asp-action="Index" class="btn btn-primary w-100 rounded-pill">@Localizer["Back to List"]</a>
                         </div>
                     </div>
                 </div>

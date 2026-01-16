@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc.Razor;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Add services to the container.
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
 builder.Services.AddControllersWithViews(options =>
 {
     // Global filter to require authentication for all controllers/actions by default
@@ -11,7 +14,9 @@ builder.Services.AddControllersWithViews(options =>
                     .Build();
     
     options.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(policy));
-});
+})
+.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+.AddDataAnnotationsLocalization();
 
 builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -32,7 +37,9 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.C
     });
 builder.Services.AddScoped<EmployeeCrudApp.Services.IEmployeeRepository, EmployeeCrudApp.Services.JsonEmployeeRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.IUserRepository, EmployeeCrudApp.Services.JsonUserRepository>();
+builder.Services.AddScoped<EmployeeCrudApp.Services.INoteRepository, EmployeeCrudApp.Services.JsonNoteRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.IEmailService, EmployeeCrudApp.Services.SmtpEmailService>();
+builder.Services.AddHttpClient();
 
 builder.Services.AddSession(options =>
 {
@@ -54,6 +61,14 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+var supportedCultures = new[] { "en-US", "gu-IN", "hi-IN", "bn-IN", "mr-IN", "ta-IN", "te-IN", "kn-IN", "ml-IN", "pa-IN", "ur-IN", "or-IN", "as-IN" };
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture(supportedCultures[0])
+    .AddSupportedCultures(supportedCultures)
+    .AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="User Management" xml:space="preserve"><value>ഉപയോക്തൃ മാനേജ്മെന്റ്</value></data>
+  <data name="Manage system access and account statuses" xml:space="preserve"><value>സിസ്റ്റം ആക്സസും അക്കൗണ്ട് നിലകളും നിയന്ത്രിക്കുക</value></data>
+  <data name="Add User" xml:space="preserve"><value>ഉപയോക്താവിനെ ചേർക്കുക</value></data>
+  <data name="Dashboard" xml:space="preserve"><value>ഡാഷ്‌ബോർഡ്</value></data>
+  <data name="User Details" xml:space="preserve"><value>ഉപയോക്തൃ വിശദാംശങ്ങൾ</value></data>
+  <data name="Email Address" xml:space="preserve"><value>ഇമെയിൽ വിലാസം</value></data>
+  <data name="Account Status" xml:space="preserve"><value>അക്കൗണ്ട് നില</value></data>
+  <data name="Actions" xml:space="preserve"><value>നടപടികൾ</value></data>
+  <data name="Verified" xml:space="preserve"><value>പരിശോധിച്ചു</value></data>
+  <data name="Pending" xml:space="preserve"><value>തീർപ്പുകൽപ്പിച്ചിട്ടില്ല</value></data>
+  <data name="Details" xml:space="preserve"><value>വിശദാംശങ്ങൾ</value></data>
+  <data name="View" xml:space="preserve"><value>കാണുക</value></data>
+  <data name="Edit" xml:space="preserve"><value>തിരുത്തുക</value></data>
+  <data name="Delete" xml:space="preserve"><value>നീക്കം ചെയ്യുക</value></data>
+  <data name="No users found in the system." xml:space="preserve"><value>സിസ്റ്റത്തിൽ ഉപയോക്താക്കളെ കണ്ടെത്തിയില്ല.</value></data>
+</root>

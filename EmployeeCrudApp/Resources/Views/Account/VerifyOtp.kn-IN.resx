@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Verify OTP" xml:space="preserve"><value>OTP ಪರಿಶೀಲಿಸಿ</value></data>
+  <data name="Signing up as:" xml:space="preserve"><value>ಎಂದು ಸೈನ್ ಅಪ್ ಆಗುತ್ತಿದೆ:</value></data>
+  <data name="Please enter the 6-digit code sent to your email." xml:space="preserve"><value>ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಮೇಲ್‌ಗೆ ಕಳುಹಿಸಿದ 6-ಅಂಕಿಯ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ।</value></data>
+  <data name="Check your email (or &lt;code&gt;email_log.txt&lt;/code&gt; if SMTP is not configured) for the code." xml:space="preserve"><value>ಕೋಡ್‌ಗಾಗಿ ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ।</value></data>
+  <data name="OTP Code" xml:space="preserve"><value>OTP ಕೋಡ್</value></data>
+  <data name="Enter 6-digit OTP" xml:space="preserve"><value>6-ಅಂಕಿಯ OTP ನಮೂದಿಸಿ</value></data>
+  <data name="Verify &amp; Login" xml:space="preserve"><value>ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಲಾಗಿನ್ ಮಾಡಿ</value></data>
+  <data name="Back to Login" xml:space="preserve"><value>ಲಾಗಿನ್‌ಗೆ ಹಿಂತಿರುಗಿ</value></data>
+</root>

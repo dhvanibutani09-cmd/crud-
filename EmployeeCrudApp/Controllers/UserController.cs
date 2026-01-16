@@ -10,11 +10,13 @@ namespace EmployeeCrudApp.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IEmailService _emailService;
+        private readonly Microsoft.Extensions.Localization.IStringLocalizer<UserController> _localizer;
 
-        public UserController(IUserRepository userRepository, IEmailService emailService)
+        public UserController(IUserRepository userRepository, IEmailService emailService, Microsoft.Extensions.Localization.IStringLocalizer<UserController> localizer)
         {
             _userRepository = userRepository;
             _emailService = emailService;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -36,7 +38,7 @@ namespace EmployeeCrudApp.Controllers
                 var existingUser = _userRepository.GetByEmail(user.Email);
                 if (existingUser != null)
                 {
-                    ModelState.AddModelError("Email", "Email already exists.");
+                    ModelState.AddModelError("Email", _localizer["Email already exists."]);
                     return View(user);
                 }
 
@@ -94,7 +96,7 @@ namespace EmployeeCrudApp.Controllers
                 TempData.Keep("PendingUser"); // Keep data for retry
             }
             
-            ModelState.AddModelError(string.Empty, "Invalid or expired OTP provided.");
+            ModelState.AddModelError(string.Empty, _localizer["Invalid or expired OTP provided."]);
             return View();
         }
 

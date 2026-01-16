@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Dashboard" xml:space="preserve"><value>ড্যাশবোর্ড</value></data>
+  <data name="Users" xml:space="preserve"><value>ব্যৱহাৰকাৰীসকল</value></data>
+  <data name="Login" xml:space="preserve"><value>লগইন</value></data>
+  <data name="Logout" xml:space="preserve"><value>লগ আউট</value></data>
+  <data name="Language" xml:space="preserve">
+    <value>ভাষা</value>
+  </data>
+  <data name="User Management" xml:space="preserve">
+    <value>ব্যৱহাৰকাৰী ব্যৱস্থাপনা</value>
+  </data>
+</root>

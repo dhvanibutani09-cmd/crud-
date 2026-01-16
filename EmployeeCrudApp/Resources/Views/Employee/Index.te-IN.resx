@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Employees" xml:space="preserve"><value>ఉద్యోగులు</value></data>
+  <data name="Create New" xml:space="preserve"><value>కొత్తది సృష్టించు</value></data>
+  <data name="Id" xml:space="preserve"><value>ఐడి</value></data>
+  <data name="Name" xml:space="preserve"><value>పేరు</value></data>
+  <data name="Age" xml:space="preserve"><value>వయస్సు</value></data>
+  <data name="Email" xml:space="preserve"><value>ఈమెయిల్</value></data>
+  <data name="Details" xml:space="preserve"><value>వివరాలు</value></data>
+  <data name="View" xml:space="preserve"><value>చూడండి</value></data>
+  <data name="Edit" xml:space="preserve"><value>సవరించండి</value></data>
+  <data name="Delete" xml:space="preserve"><value>తొలగించండి</value></data>
+</root>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Delete User" xml:space="preserve"><value>صارف کو حذف کریں</value></data>
+  <data name="Are you sure you want to delete this user?" xml:space="preserve"><value>کیا آپ واقعی اس صارف کو حذف کرنا چاہتے ہیں؟</value></data>
+  <data name="This action cannot be undone." xml:space="preserve"><value>یہ عمل واپس نہیں لیا جا سکتا۔</value></data>
+  <data name="User Details" xml:space="preserve"><value>صارف کی تفصیلات</value></data>
+  <data name="Full Name" xml:space="preserve"><value>پورا نام</value></data>
+  <data name="Email" xml:space="preserve"><value>ای میل ایڈریس</value></data>
+  <data name="Confirm Delete" xml:space="preserve"><value>حذف کرنے کی تصدیق کریں</value></data>
+  <data name="Back to List" xml:space="preserve"><value>فہرست پر واپس جائیں</value></data>
+</root>

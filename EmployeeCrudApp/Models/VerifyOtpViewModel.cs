@@ -4,8 +4,8 @@ namespace EmployeeCrudApp.Models
 {
     public class VerifyOtpViewModel
     {
-        [Required(ErrorMessage = "OTP is required.")]
-        [Display(Name = "One Time Password (OTP)")]
+        [Display(Name = "OTP Code")]
+        [Required(ErrorMessage = "The {0} field is required.")]
         public string Otp { get; set; }
 
         [Required]

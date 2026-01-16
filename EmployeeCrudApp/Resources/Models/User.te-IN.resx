@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Full Name" xml:space="preserve"><value>పూర్తి పేరు</value></data>
+  <data name="Email Address" xml:space="preserve"><value>ఈమెయిల్ చిరునామా</value></data>
+  <data name="Password" xml:space="preserve"><value>పాస్‌వర్డ్</value></data>
+  <data name="Confirm Password" xml:space="preserve"><value>పాస్‌వర్డ్‌ను నిర్ధారించండి</value></data>
+  <data name="Email Verified" xml:space="preserve"><value>ఈమెయిల్ ధృవీకరించబడింది</value></data>
+  <data name="The {0} field is required." xml:space="preserve"><value>{0} ఫీల్డ్ అవసరం.</value></data>
+  <data name="The {0} field is not a valid e-mail address." xml:space="preserve"><value>{0} ఫీల్డ్ చెల్లుబాటయ్యే ఈమెయిల్ చిరునామా కాదు.</value></data>
+  <data name="The password and confirmation password do not match." xml:space="preserve"><value>పాస్‌వర్డ్ మరియు నిర్ధారణ పాస్‌వర్డ్ సరిపోలడం లేదు.</value></data>
+</root>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Add New User" xml:space="preserve"><value>ନୂତନ ବ୍ୟବହାରକାରୀ ଯୋଡନ୍ତୁ</value></data>
+  <data name="Create a new account for system access" xml:space="preserve"><value>ସିଷ୍ଟମ୍ ଆକ୍ସେସ୍ ପାଇଁ ଏକ ନୂତନ ଆକାଉଣ୍ଟ୍ ସୃଷ୍ଟି କରନ୍ତୁ</value></data>
+  <data name="Full Name" xml:space="preserve"><value>ପୂରା ନାମ</value></data>
+  <data name="Enter full name" xml:space="preserve"><value>ପୂରା ନାମ ଲେଖନ୍ତୁ</value></data>
+  <data name="Email Address" xml:space="preserve"><value>ଇମେଲ୍ ଠିକଣା</value></data>
+  <data name="Password" xml:space="preserve"><value>ପାସୱାର୍ଡ</value></data>
+  <data name="Create a password" xml:space="preserve"><value>ଏକ ପାସୱାର୍ଡ ସୃଷ୍ଟି କରନ୍ତୁ</value></data>
+  <data name="Confirm Password" xml:space="preserve"><value>ପାସୱାର୍ଡ ନିଶ୍ਚିତ କରନ୍ତୁ</value></data>
+  <data name="Confirm your password" xml:space="preserve"><value>ଆପଣଙ୍କ ପାସୱାର୍ଡ ଯାଞ୍ચ କରନ୍ତୁ</value></data>
+  <data name="Create User" xml:space="preserve"><value>ବ୍ୟବହାରକାରୀ ସୃଷ୍ଟି କରନ୍ତୁ</value></data>
+  <data name="Cancel" xml:space="preserve"><value>ବାତିଲ୍ କରନ୍ତୁ</value></data>
+</root>

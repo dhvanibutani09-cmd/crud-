@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="User Management" xml:space="preserve"><value>ব্যৱহাৰকাৰী ব্যৱস্থাপনা</value></data>
+  <data name="Manage system access and account statuses" xml:space="preserve"><value>চিস্টেম এক্সেছ আৰু একাউণ্টৰ স্থিতি পৰিচালনা কৰক</value></data>
+  <data name="Add User" xml:space="preserve"><value>ব্যৱহাৰকাৰী যোগ কৰক</value></data>
+  <data name="Dashboard" xml:space="preserve"><value>ড্যাশবোর্ড</value></data>
+  <data name="User Details" xml:space="preserve"><value>ব্যৱহাৰকাৰীৰ বিৱৰণ</value></data>
+  <data name="Email Address" xml:space="preserve"><value>ইমেইল ঠিকনা</value></data>
+  <data name="Account Status" xml:space="preserve"><value>একাউণ্টৰ স্থিতি</value></data>
+  <data name="Actions" xml:space="preserve"><value>কাৰ্য্যসমূহ</value></data>
+  <data name="Verified" xml:space="preserve"><value>যাচাই কৰা হৈছে</value></data>
+  <data name="Pending" xml:space="preserve"><value>বিচারাধীন</value></data>
+  <data name="Details" xml:space="preserve"><value>বিস্তারিত</value></data>
+  <data name="View" xml:space="preserve"><value>চাওক</value></data>
+  <data name="Edit" xml:space="preserve"><value>সম্পাদনা কৰক</value></data>
+  <data name="Delete" xml:space="preserve"><value>মচি পেলাওক</value></data>
+  <data name="No users found in the system." xml:space="preserve"><value>চিস্টেমত কোনো ব্যৱহাৰকাৰী পোৱা নগ’ল।</value></data>
+</root>

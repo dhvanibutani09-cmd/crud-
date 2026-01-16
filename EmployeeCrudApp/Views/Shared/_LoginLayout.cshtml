@@ -9,9 +9,27 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmployeeCrudApp.styles.css" asp-append-version="true" />
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
-    <div class="container">
-        <main role="main" class="pb-3 d-flex justify-content-center">
+<body class="bg-light">
+    <div style="position: absolute; top: 15px; right: 15px; z-index: 1000;">
+        <select id="languageSelect" class="form-select form-select-sm" onchange="changeLanguage(this.value)">
+            <option value="en-US">English</option>
+            <option value="hi-IN">Hindi</option>
+            <option value="gu-IN">Gujarati</option>
+            <option value="bn-IN">Bengali</option>
+            <option value="mr-IN">Marathi</option>
+            <option value="ta-IN">Tamil</option>
+            <option value="te-IN">Telugu</option>
+            <option value="kn-IN">Kannada</option>
+            <option value="ml-IN">Malayalam</option>
+            <option value="pa-IN">Punjabi</option>
+            <option value="ur-IN">Urdu</option>
+            <option value="or-IN">Odia</option>
+            <option value="as-IN">Assamese</option>
+        </select>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <main role="main" class="pb-3 d-flex justify-content-center w-100">
             @RenderBody()
         </main>
     </div>
@@ -19,6 +37,33 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    <script>
+        function changeLanguage(culture) {
+            localStorage.setItem('culture', culture);
+            document.cookie = ".AspNetCore.Culture=c=" + culture + "|uic=" + culture + ";path=/";
+            location.reload();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const getCookie = (name) => {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+            
+            let cookieCultureValue = getCookie('.AspNetCore.Culture');
+            let currentCulture = 'en-US';
+            if (cookieCultureValue) {
+                let match = cookieCultureValue.match(/c=([^|]+)/);
+                if (match) {
+                    currentCulture = match[1];
+                }
+            }
+            document.getElementById('languageSelect').value = currentCulture;
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -13,12 +13,14 @@ namespace EmployeeCrudApp.Controllers
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IUserRepository _userRepository;
         private readonly IEmailService _emailService;
+        private readonly Microsoft.Extensions.Localization.IStringLocalizer<AccountController> _localizer;
 
-        public AccountController(IEmployeeRepository employeeRepository, IUserRepository userRepository, IEmailService emailService)
+        public AccountController(IEmployeeRepository employeeRepository, IUserRepository userRepository, IEmailService emailService, Microsoft.Extensions.Localization.IStringLocalizer<AccountController> localizer)
         {
             _employeeRepository = employeeRepository;
             _userRepository = userRepository;
             _emailService = emailService;
+            _localizer = localizer;
         }
 
         [HttpGet]
@@ -60,11 +62,11 @@ namespace EmployeeCrudApp.Controllers
                 
                 if (user != null)
                 {
-                    ModelState.AddModelError(string.Empty, "Incorrect password. You can reset it using the link below.");
+                    ModelState.AddModelError(string.Empty, _localizer["Incorrect password. You can reset it using the link below."]);
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid email or password.");
+                    ModelState.AddModelError(string.Empty, _localizer["Invalid email or password."]);
                 }
             }
 
@@ -87,7 +89,7 @@ namespace EmployeeCrudApp.Controllers
                 var existingUser = _userRepository.GetByEmail(model.Email);
                 if (existingUser != null && existingUser.IsEmailVerified)
                 {
-                    ModelState.AddModelError("Email", "Email already exists.");
+                    ModelState.AddModelError("Email", _localizer["Email already exists."]);
                     return View(model);
                 }
 
@@ -195,7 +197,7 @@ namespace EmployeeCrudApp.Controllers
                     return RedirectToAction("Index", "Dashboard");
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid or expired OTP.");
+                ModelState.AddModelError(string.Empty, _localizer["Invalid or expired OTP."]);
             }
             return View(model);
         }
@@ -233,10 +235,10 @@ namespace EmployeeCrudApp.Controllers
                     await _emailService.SendEmailAsync(user.Email, "Reset your password", 
                         $"<p>Click the link below to reset your password:</p><p><a href='{resetLink}'>{resetLink}</a></p>");
                     
-                    TempData["Success"] = "A reset link has been sent to your email.";
+                    TempData["Success"] = _localizer["A reset link has been sent to your email."];
                     return RedirectToAction("Login");
                 }
-                ModelState.AddModelError(string.Empty, "Email not found.");
+                ModelState.AddModelError(string.Empty, _localizer["Email not found."]);
             }
             return View(model);
         }
@@ -261,10 +263,10 @@ namespace EmployeeCrudApp.Controllers
                     user.Otp = null;
                     user.OtpExpiry = null;
                     _userRepository.Update(user);
-                    TempData["Success"] = "Password reset successfully. Please login.";
+                    TempData["Success"] = _localizer["Password reset successfully. Please login."];
                     return RedirectToAction("Login");
                 }
-                ModelState.AddModelError(string.Empty, "Invalid or expired OTP.");
+                ModelState.AddModelError(string.Empty, _localizer["Invalid or expired OTP."]);
             }
             return View(model);
         }

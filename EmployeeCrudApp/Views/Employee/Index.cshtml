@@ -1,21 +1,23 @@
 @model IEnumerable<EmployeeCrudApp.Models.Employee>
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Employe";
+    ViewData["Title"] = Localizer["Employees"];
 }
 
-<h1>Employee</h1>
+<h1>@Localizer["Employees"]</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">@Localizer["Create New"]</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Id)</th>
-            <th>@Html.DisplayNameFor(model => model.Name)</th>
-            <th>@Html.DisplayNameFor(model => model.Age)</th>
-            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Localizer["Id"]</th>
+            <th>@Localizer["Name"]</th>
+            <th>@Localizer["Age"]</th>
+            <th>@Localizer["Email"]</th>
             <th></th>
         </tr>
     </thead>
@@ -27,9 +29,9 @@
             <td>@Html.DisplayFor(modelItem => item.Age)</td>
             <td>@Html.DisplayFor(modelItem => item.Email)</td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Localizer["View"]</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
             </td>
         </tr>
 }

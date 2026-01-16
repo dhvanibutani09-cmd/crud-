@@ -77,4 +77,10 @@
   <data name="Latest world updates" xml:space="preserve"><value>শেহতীয়া বিশ্ব আপডেট</value></data>
   <data name="Search city..." xml:space="preserve"><value>চহৰ বিচাৰক...</value></data>
   <data name="Search news..." xml:space="preserve"><value>খবৰ বিচাৰক...</value></data>
+  <data name="World Countries" xml:space="preserve"><value>বিশ্বৰ দেশসমূহ</value></data>
+  <data name="All Country Details" xml:space="preserve"><value>সকলো দেশৰ বিৱৰণ</value></data>
+  <data name="Back" xml:space="preserve"><value>পিছলৈ</value></data>
+  <data name="Unable to load directory." xml:space="preserve"><value>ডাইৰেক্টৰী লোড কৰিবলৈ সক্ষম নহ’ল।</value></data>
+  <data name="No results found." xml:space="preserve"><value>কোনো ফলাফল পোৱা নগ’ল।</value></data>
+  <data name="Unable to load details." xml:space="preserve"><value>বিৱৰণ লোড কৰিবলৈ সক্ষম নহ’ল।</value></data>
 </root>

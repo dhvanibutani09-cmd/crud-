@@ -77,4 +77,10 @@
   <data name="Latest world updates" xml:space="preserve"><value>ಇತ್ತೀಚಿನ ವಿಶ್ವ ಅಪ್‌ಡೇಟ್ಸ್‌</value></data>
   <data name="Search city..." xml:space="preserve"><value>ನಗರವನ್ನು ಹುಡುಕಿ...</value></data>
   <data name="Search news..." xml:space="preserve"><value>ಸುದ್ದಿಗಳನ್ನು ಹುಡುಕಿ...</value></data>
+  <data name="World Countries" xml:space="preserve"><value>ವಿಶ್ವದ ರಾಷ್ಟ್ರಗಳು</value></data>
+  <data name="All Country Details" xml:space="preserve"><value>ಎಲ್ಲಾ ದೇಶದ ವಿವರಗಳು</value></data>
+  <data name="Back" xml:space="preserve"><value>ಹಿಂದಕ್ಕೆ</value></data>
+  <data name="Unable to load directory." xml:space="preserve"><value>ಡೈರೆಕ್ಟರಿಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.</value></data>
+  <data name="No results found." xml:space="preserve"><value>ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ.</value></data>
+  <data name="Unable to load details." xml:space="preserve"><value>ವಿವರಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.</value></data>
 </root>

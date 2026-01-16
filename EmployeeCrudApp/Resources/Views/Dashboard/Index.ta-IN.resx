@@ -77,4 +77,10 @@
   <data name="Latest world updates" xml:space="preserve"><value>சமீபத்திய உலக செய்திகள்</value></data>
   <data name="Search city..." xml:space="preserve"><value>நகரத்தைத் தேடு...</value></data>
   <data name="Search news..." xml:space="preserve"><value>செய்திகளைத் தேடு...</value></data>
+  <data name="World Countries" xml:space="preserve"><value>உலக நாடுகள்</value></data>
+  <data name="All Country Details" xml:space="preserve"><value>அனைத்து நாட்டு விவரங்கள்</value></data>
+  <data name="Back" xml:space="preserve"><value>பின்னால்</value></data>
+  <data name="Unable to load directory." xml:space="preserve"><value>ডিরেক্টரியை ஏற்ற முடியவில்லை.</value></data>
+  <data name="No results found." xml:space="preserve"><value>முடிவுகள் எதுவும் கிடைக்கவில்லை.</value></data>
+  <data name="Unable to load details." xml:space="preserve"><value>விவரங்களை ஏற்ற முடியவில்லை.</value></data>
 </root>

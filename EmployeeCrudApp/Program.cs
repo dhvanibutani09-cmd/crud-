@@ -38,6 +38,7 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.C
 builder.Services.AddScoped<EmployeeCrudApp.Services.IEmployeeRepository, EmployeeCrudApp.Services.JsonEmployeeRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.IUserRepository, EmployeeCrudApp.Services.JsonUserRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.INoteRepository, EmployeeCrudApp.Services.JsonNoteRepository>();
+builder.Services.AddScoped<EmployeeCrudApp.Services.ILocationRepository, EmployeeCrudApp.Services.JsonLocationRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.IEmailService, EmployeeCrudApp.Services.SmtpEmailService>();
 builder.Services.AddHttpClient();
 

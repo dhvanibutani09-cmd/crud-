@@ -18,9 +18,10 @@ namespace EmployeeCrudApp.Controllers
 
         public IActionResult Index()
         {
+            var userId = User.Identity?.Name ?? string.Empty;
             var viewModel = new DashboardViewModel
             {
-                Notes = _noteRepository.GetAll().OrderByDescending(n => n.CreatedAt).ToList()
+                Notes = _noteRepository.GetAll(userId).OrderByDescending(n => n.CreatedAt).ToList()
             };
             return View(viewModel);
         }
@@ -30,7 +31,8 @@ namespace EmployeeCrudApp.Controllers
         {
             if (!string.IsNullOrWhiteSpace(text))
             {
-                _noteRepository.Add(new Note { Text = text });
+                var userId = User.Identity?.Name ?? string.Empty;
+                _noteRepository.Add(new Note { Text = text, UserId = userId });
                 return Json(new { success = true });
             }
             return Json(new { success = false, message = "Note text cannot be empty." });
@@ -41,7 +43,9 @@ namespace EmployeeCrudApp.Controllers
         {
             if (!string.IsNullOrWhiteSpace(text))
             {
-                _noteRepository.Update(new Note { Id = id, Text = text });
+                var userId = User.Identity?.Name ?? string.Empty;
+                var note = new Note { Id = id, Text = text };
+                _noteRepository.Update(note, userId);
                 return Json(new { success = true });
             }
             return Json(new { success = false, message = "Note text cannot be empty." });
@@ -50,7 +54,8 @@ namespace EmployeeCrudApp.Controllers
         [HttpPost]
         public IActionResult DeleteNote(int id)
         {
-            _noteRepository.Delete(id);
+            var userId = User.Identity?.Name ?? string.Empty;
+            _noteRepository.Delete(id, userId);
             return Json(new { success = true });
         }
 

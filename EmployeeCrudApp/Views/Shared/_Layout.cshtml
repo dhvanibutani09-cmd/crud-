@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmployeeCrudApp.styles.css" asp-append-version="true" />
+    <script>
+        window.APP_CULTURE = '@System.Globalization.CultureInfo.CurrentUICulture.Name';
+    </script>
 </head>
 <body>
     <header>
@@ -30,7 +33,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">@Localizer["User Management"]</a>
                         </li>
-
                     </ul>
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item me-3">
@@ -50,7 +52,7 @@
                                 <option value="as-IN">অসমীয়া</option>
                             </select>
                         </li>
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity?.IsAuthenticated == true)
                         {
                             <li class="nav-item">
                                 <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="form-inline">

@@ -1,0 +1,111 @@
+@model IEnumerable<EmployeeCrudApp.Models.Location>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Location Management"];
+}
+
+<style>
+    header { display: none !important; }
+</style>
+
+<div class="container mt-4 text-dark">
+    <div class="mb-4">
+        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-dark rounded-pill px-4 shadow-sm">
+            <i class="bi bi-arrow-left me-2"></i> @Localizer["Back to Dashboard"]
+        </a>
+    </div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-0 fw-bold">@Localizer["Location Management"]</h1>
+            <p class="text-muted small mb-0">@Localizer["Manage countries, cities, and villages for news targeting"]</p>
+        </div>
+        <div class="d-flex gap-2">
+            <button onclick="importCountries()" class="btn btn-outline-primary rounded-pill px-4 shadow-sm fw-bold">
+                <i class="bi bi-download me-2"></i> @Localizer["Import Countries"]
+            </button>
+            <a asp-action="Create" class="btn btn-primary rounded-pill px-4 shadow-sm fw-bold">
+                <i class="bi bi-plus-lg me-2"></i> @Localizer["Add Location"]
+            </a>
+        </div>
+    </div>
+
+    <div class="card glass-card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="bg-primary bg-opacity-10">
+                    <tr>
+                        <th class="ps-4">@Localizer["Name"]</th>
+                        <th>@Localizer["Type"]</th>
+                        <th>@Localizer["Code"]</th>
+                        <th class="pe-4 text-end">@Localizer["Actions"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderByDescending(l => l.Type == LocationType.Country).ThenBy(l => l.Name))
+                    {
+                        <tr>
+                            <td class="ps-4 py-3 fw-bold">@item.Name</td>
+                            <td>
+                                <span class="badge rounded-pill bg-opacity-10 px-3 py-2 border @(item.Type == LocationType.Country ? "bg-primary text-primary border-primary" : item.Type == LocationType.City ? "bg-info text-info border-info" : "bg-warning text-dark border-warning")">
+                                    @Localizer[item.Type.ToString()]
+                                </span>
+                            </td>
+                            <td>@(item.CountryCode ?? "-")</td>
+                            <td class="pe-4 text-end">
+                                <div class="btn-group shadow-sm">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark px-3" title="@Localizer["Edit"]">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger px-3 rounded-end-pill" title="@Localizer["Delete"]">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center py-5 text-muted fst-italic">
+                                <i class="bi bi-geo-alt fs-1 d-block mb-2"></i>
+                                <span class="d-block text-muted">@Localizer["No locations found. Click 'Import Countries' to start."]</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        async function importCountries() {
+            if (!confirm("@Localizer["This will import all global countries. Continue?"]")) return;
+            
+            // Show loading overlay
+            const btn = event.target.closest('button');
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> @Localizer["Importing..."]`;
+
+            try {
+                const response = await fetch('/Location/ImportCountries', { method: 'POST' });
+                const result = await response.json();
+                if (result.success) {
+                    alert(`@Localizer["Successfully imported"] ${result.count} @Localizer["countries."]`);
+                    location.reload();
+                } else {
+                    alert("@Localizer["Error:"] " + result.message);
+                }
+            } catch (error) {
+                alert("@Localizer["An unexpected error occurred."] " + error);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+            }
+        }
+    </script>
+}

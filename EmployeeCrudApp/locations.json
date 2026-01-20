@@ -1,0 +1,1752 @@
+[
+  {
+    "Id": 1,
+    "Name": "Antigua and Barbuda",
+    "Type": 0,
+    "CountryCode": "AG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 2,
+    "Name": "Bhutan",
+    "Type": 0,
+    "CountryCode": "BT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 3,
+    "Name": "Italy",
+    "Type": 0,
+    "CountryCode": "IT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 4,
+    "Name": "Tuvalu",
+    "Type": 0,
+    "CountryCode": "TV",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 5,
+    "Name": "Anguilla",
+    "Type": 0,
+    "CountryCode": "AI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 6,
+    "Name": "Australia",
+    "Type": 0,
+    "CountryCode": "AU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 7,
+    "Name": "Belize",
+    "Type": 0,
+    "CountryCode": "BZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 8,
+    "Name": "Vanuatu",
+    "Type": 0,
+    "CountryCode": "VU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 9,
+    "Name": "Belarus",
+    "Type": 0,
+    "CountryCode": "BY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 10,
+    "Name": "Mauritius",
+    "Type": 0,
+    "CountryCode": "MU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 11,
+    "Name": "Laos",
+    "Type": 0,
+    "CountryCode": "LA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 12,
+    "Name": "Senegal",
+    "Type": 0,
+    "CountryCode": "SN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 13,
+    "Name": "Turkey",
+    "Type": 0,
+    "CountryCode": "TR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 14,
+    "Name": "Bolivia",
+    "Type": 0,
+    "CountryCode": "BO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 15,
+    "Name": "Sri Lanka",
+    "Type": 0,
+    "CountryCode": "LK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 16,
+    "Name": "Norfolk Island",
+    "Type": 0,
+    "CountryCode": "NF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 17,
+    "Name": "China",
+    "Type": 0,
+    "CountryCode": "CN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 18,
+    "Name": "Caribbean Netherlands",
+    "Type": 0,
+    "CountryCode": "BQ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 19,
+    "Name": "Guernsey",
+    "Type": 0,
+    "CountryCode": "GG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 20,
+    "Name": "Sudan",
+    "Type": 0,
+    "CountryCode": "SD",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 21,
+    "Name": "Mayotte",
+    "Type": 0,
+    "CountryCode": "YT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 22,
+    "Name": "Saint Barth\u00E9lemy",
+    "Type": 0,
+    "CountryCode": "BL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 23,
+    "Name": "Vatican City",
+    "Type": 0,
+    "CountryCode": "VA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 24,
+    "Name": "Turks and Caicos Islands",
+    "Type": 0,
+    "CountryCode": "TC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 25,
+    "Name": "Cura\u00E7ao",
+    "Type": 0,
+    "CountryCode": "CW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 26,
+    "Name": "Botswana",
+    "Type": 0,
+    "CountryCode": "BW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 27,
+    "Name": "Benin",
+    "Type": 0,
+    "CountryCode": "BJ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 28,
+    "Name": "Lithuania",
+    "Type": 0,
+    "CountryCode": "LT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 29,
+    "Name": "Montserrat",
+    "Type": 0,
+    "CountryCode": "MS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 30,
+    "Name": "British Virgin Islands",
+    "Type": 0,
+    "CountryCode": "VG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 31,
+    "Name": "Burundi",
+    "Type": 0,
+    "CountryCode": "BI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 32,
+    "Name": "United States Minor Outlying Islands",
+    "Type": 0,
+    "CountryCode": "UM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 33,
+    "Name": "Ireland",
+    "Type": 0,
+    "CountryCode": "IE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 34,
+    "Name": "Solomon Islands",
+    "Type": 0,
+    "CountryCode": "SB",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 35,
+    "Name": "Bermuda",
+    "Type": 0,
+    "CountryCode": "BM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 36,
+    "Name": "Finland",
+    "Type": 0,
+    "CountryCode": "FI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 37,
+    "Name": "Peru",
+    "Type": 0,
+    "CountryCode": "PE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 38,
+    "Name": "Bangladesh",
+    "Type": 0,
+    "CountryCode": "BD",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 39,
+    "Name": "Denmark",
+    "Type": 0,
+    "CountryCode": "DK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 40,
+    "Name": "Saint Vincent and the Grenadines",
+    "Type": 0,
+    "CountryCode": "VC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 41,
+    "Name": "Dominican Republic",
+    "Type": 0,
+    "CountryCode": "DO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 42,
+    "Name": "Moldova",
+    "Type": 0,
+    "CountryCode": "MD",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 43,
+    "Name": "Bulgaria",
+    "Type": 0,
+    "CountryCode": "BG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 44,
+    "Name": "Costa Rica",
+    "Type": 0,
+    "CountryCode": "CR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 45,
+    "Name": "Namibia",
+    "Type": 0,
+    "CountryCode": "NA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 46,
+    "Name": "Svalbard and Jan Mayen",
+    "Type": 0,
+    "CountryCode": "SJ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 47,
+    "Name": "Luxembourg",
+    "Type": 0,
+    "CountryCode": "LU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 48,
+    "Name": "Russia",
+    "Type": 0,
+    "CountryCode": "RU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 49,
+    "Name": "United Arab Emirates",
+    "Type": 0,
+    "CountryCode": "AE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 50,
+    "Name": "Sint Maarten",
+    "Type": 0,
+    "CountryCode": "SX",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 51,
+    "Name": "Bahamas",
+    "Type": 0,
+    "CountryCode": "BS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 52,
+    "Name": "Japan",
+    "Type": 0,
+    "CountryCode": "JP",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 53,
+    "Name": "Nigeria",
+    "Type": 0,
+    "CountryCode": "NG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 54,
+    "Name": "Ghana",
+    "Type": 0,
+    "CountryCode": "GH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 55,
+    "Name": "Sierra Leone",
+    "Type": 0,
+    "CountryCode": "SL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 56,
+    "Name": "Saint Pierre and Miquelon",
+    "Type": 0,
+    "CountryCode": "PM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 57,
+    "Name": "Albania",
+    "Type": 0,
+    "CountryCode": "AL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 58,
+    "Name": "Tokelau",
+    "Type": 0,
+    "CountryCode": "TK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 59,
+    "Name": "Saint Helena, Ascension and Tristan da Cunha",
+    "Type": 0,
+    "CountryCode": "SH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 60,
+    "Name": "Tonga",
+    "Type": 0,
+    "CountryCode": "TO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 61,
+    "Name": "Turkmenistan",
+    "Type": 0,
+    "CountryCode": "TM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 62,
+    "Name": "Djibouti",
+    "Type": 0,
+    "CountryCode": "DJ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 63,
+    "Name": "Central African Republic",
+    "Type": 0,
+    "CountryCode": "CF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 64,
+    "Name": "Lebanon",
+    "Type": 0,
+    "CountryCode": "LB",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 65,
+    "Name": "Latvia",
+    "Type": 0,
+    "CountryCode": "LV",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 66,
+    "Name": "Cocos (Keeling) Islands",
+    "Type": 0,
+    "CountryCode": "CC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 67,
+    "Name": "Gambia",
+    "Type": 0,
+    "CountryCode": "GM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 68,
+    "Name": "Honduras",
+    "Type": 0,
+    "CountryCode": "HN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 69,
+    "Name": "Niue",
+    "Type": 0,
+    "CountryCode": "NU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 70,
+    "Name": "Mauritania",
+    "Type": 0,
+    "CountryCode": "MR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 71,
+    "Name": "Kosovo",
+    "Type": 0,
+    "CountryCode": "XK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 72,
+    "Name": "Wallis and Futuna",
+    "Type": 0,
+    "CountryCode": "WF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 73,
+    "Name": "South Georgia",
+    "Type": 0,
+    "CountryCode": "GS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 74,
+    "Name": "French Polynesia",
+    "Type": 0,
+    "CountryCode": "PF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 75,
+    "Name": "Togo",
+    "Type": 0,
+    "CountryCode": "TG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 76,
+    "Name": "Belgium",
+    "Type": 0,
+    "CountryCode": "BE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 77,
+    "Name": "Zambia",
+    "Type": 0,
+    "CountryCode": "ZM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 78,
+    "Name": "Cayman Islands",
+    "Type": 0,
+    "CountryCode": "KY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 79,
+    "Name": "Pitcairn Islands",
+    "Type": 0,
+    "CountryCode": "PN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 80,
+    "Name": "Cook Islands",
+    "Type": 0,
+    "CountryCode": "CK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 81,
+    "Name": "Madagascar",
+    "Type": 0,
+    "CountryCode": "MG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 82,
+    "Name": "Montenegro",
+    "Type": 0,
+    "CountryCode": "ME",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 83,
+    "Name": "South Korea",
+    "Type": 0,
+    "CountryCode": "KR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 84,
+    "Name": "Ethiopia",
+    "Type": 0,
+    "CountryCode": "ET",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 85,
+    "Name": "Mongolia",
+    "Type": 0,
+    "CountryCode": "MN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 86,
+    "Name": "Slovakia",
+    "Type": 0,
+    "CountryCode": "SK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 87,
+    "Name": "Cuba",
+    "Type": 0,
+    "CountryCode": "CU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 88,
+    "Name": "Antarctica",
+    "Type": 0,
+    "CountryCode": "AQ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 89,
+    "Name": "Guatemala",
+    "Type": 0,
+    "CountryCode": "GT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 90,
+    "Name": "French Guiana",
+    "Type": 0,
+    "CountryCode": "GF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 91,
+    "Name": "Norway",
+    "Type": 0,
+    "CountryCode": "NO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 92,
+    "Name": "Grenada",
+    "Type": 0,
+    "CountryCode": "GD",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 93,
+    "Name": "R\u00E9union",
+    "Type": 0,
+    "CountryCode": "RE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 94,
+    "Name": "Chile",
+    "Type": 0,
+    "CountryCode": "CL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 95,
+    "Name": "Colombia",
+    "Type": 0,
+    "CountryCode": "CO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 96,
+    "Name": "Saudi Arabia",
+    "Type": 0,
+    "CountryCode": "SA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 97,
+    "Name": "Israel",
+    "Type": 0,
+    "CountryCode": "IL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 98,
+    "Name": "Germany",
+    "Type": 0,
+    "CountryCode": "DE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 99,
+    "Name": "New Zealand",
+    "Type": 0,
+    "CountryCode": "NZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 100,
+    "Name": "Greenland",
+    "Type": 0,
+    "CountryCode": "GL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 101,
+    "Name": "Kyrgyzstan",
+    "Type": 0,
+    "CountryCode": "KG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 102,
+    "Name": "El Salvador",
+    "Type": 0,
+    "CountryCode": "SV",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 103,
+    "Name": "Faroe Islands",
+    "Type": 0,
+    "CountryCode": "FO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 104,
+    "Name": "Palau",
+    "Type": 0,
+    "CountryCode": "PW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 105,
+    "Name": "Malta",
+    "Type": 0,
+    "CountryCode": "MT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 106,
+    "Name": "Syria",
+    "Type": 0,
+    "CountryCode": "SY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 107,
+    "Name": "Timor-Leste",
+    "Type": 0,
+    "CountryCode": "TL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 108,
+    "Name": "Croatia",
+    "Type": 0,
+    "CountryCode": "HR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 109,
+    "Name": "Papua New Guinea",
+    "Type": 0,
+    "CountryCode": "PG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 110,
+    "Name": "Netherlands",
+    "Type": 0,
+    "CountryCode": "NL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 111,
+    "Name": "Liberia",
+    "Type": 0,
+    "CountryCode": "LR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 112,
+    "Name": "Somalia",
+    "Type": 0,
+    "CountryCode": "SO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 113,
+    "Name": "Venezuela",
+    "Type": 0,
+    "CountryCode": "VE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 114,
+    "Name": "Haiti",
+    "Type": 0,
+    "CountryCode": "HT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 115,
+    "Name": "Algeria",
+    "Type": 0,
+    "CountryCode": "DZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 116,
+    "Name": "Northern Mariana Islands",
+    "Type": 0,
+    "CountryCode": "MP",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 117,
+    "Name": "Saint Martin",
+    "Type": 0,
+    "CountryCode": "MF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 118,
+    "Name": "Heard Island and McDonald Islands",
+    "Type": 0,
+    "CountryCode": "HM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 119,
+    "Name": "Aruba",
+    "Type": 0,
+    "CountryCode": "AW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 120,
+    "Name": "Egypt",
+    "Type": 0,
+    "CountryCode": "EG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 121,
+    "Name": "Malawi",
+    "Type": 0,
+    "CountryCode": "MW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 122,
+    "Name": "Equatorial Guinea",
+    "Type": 0,
+    "CountryCode": "GQ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 123,
+    "Name": "United States Virgin Islands",
+    "Type": 0,
+    "CountryCode": "VI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 124,
+    "Name": "Ecuador",
+    "Type": 0,
+    "CountryCode": "EC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 125,
+    "Name": "Uzbekistan",
+    "Type": 0,
+    "CountryCode": "UZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 126,
+    "Name": "Gabon",
+    "Type": 0,
+    "CountryCode": "GA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 127,
+    "Name": "South Sudan",
+    "Type": 0,
+    "CountryCode": "SS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 128,
+    "Name": "Iran",
+    "Type": 0,
+    "CountryCode": "IR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 129,
+    "Name": "Kazakhstan",
+    "Type": 0,
+    "CountryCode": "KZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 130,
+    "Name": "Nicaragua",
+    "Type": 0,
+    "CountryCode": "NI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 131,
+    "Name": "Iceland",
+    "Type": 0,
+    "CountryCode": "IS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 132,
+    "Name": "Slovenia",
+    "Type": 0,
+    "CountryCode": "SI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 133,
+    "Name": "Guadeloupe",
+    "Type": 0,
+    "CountryCode": "GP",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 134,
+    "Name": "Cameroon",
+    "Type": 0,
+    "CountryCode": "CM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 135,
+    "Name": "Argentina",
+    "Type": 0,
+    "CountryCode": "AR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 136,
+    "Name": "Azerbaijan",
+    "Type": 0,
+    "CountryCode": "AZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 137,
+    "Name": "Uganda",
+    "Type": 0,
+    "CountryCode": "UG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 138,
+    "Name": "Niger",
+    "Type": 0,
+    "CountryCode": "NE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 139,
+    "Name": "Christmas Island",
+    "Type": 0,
+    "CountryCode": "CX",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 140,
+    "Name": "Myanmar",
+    "Type": 0,
+    "CountryCode": "MM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 141,
+    "Name": "Poland",
+    "Type": 0,
+    "CountryCode": "PL",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 142,
+    "Name": "Jordan",
+    "Type": 0,
+    "CountryCode": "JO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 143,
+    "Name": "Hong Kong",
+    "Type": 0,
+    "CountryCode": "HK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 144,
+    "Name": "DR Congo",
+    "Type": 0,
+    "CountryCode": "CD",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 145,
+    "Name": "Eritrea",
+    "Type": 0,
+    "CountryCode": "ER",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 146,
+    "Name": "Kiribati",
+    "Type": 0,
+    "CountryCode": "KI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 147,
+    "Name": "Marshall Islands",
+    "Type": 0,
+    "CountryCode": "MH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 148,
+    "Name": "Burkina Faso",
+    "Type": 0,
+    "CountryCode": "BF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 149,
+    "Name": "Zimbabwe",
+    "Type": 0,
+    "CountryCode": "ZW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 150,
+    "Name": "Kenya",
+    "Type": 0,
+    "CountryCode": "KE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 151,
+    "Name": "Comoros",
+    "Type": 0,
+    "CountryCode": "KM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 152,
+    "Name": "Gibraltar",
+    "Type": 0,
+    "CountryCode": "GI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 153,
+    "Name": "Brunei",
+    "Type": 0,
+    "CountryCode": "BN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 154,
+    "Name": "Sweden",
+    "Type": 0,
+    "CountryCode": "SE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 155,
+    "Name": "Lesotho",
+    "Type": 0,
+    "CountryCode": "LS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 156,
+    "Name": "Isle of Man",
+    "Type": 0,
+    "CountryCode": "IM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 157,
+    "Name": "Micronesia",
+    "Type": 0,
+    "CountryCode": "FM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 158,
+    "Name": "Tanzania",
+    "Type": 0,
+    "CountryCode": "TZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 159,
+    "Name": "Cape Verde",
+    "Type": 0,
+    "CountryCode": "CV",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 160,
+    "Name": "Afghanistan",
+    "Type": 0,
+    "CountryCode": "AF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 161,
+    "Name": "Andorra",
+    "Type": 0,
+    "CountryCode": "AD",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 162,
+    "Name": "Greece",
+    "Type": 0,
+    "CountryCode": "GR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 163,
+    "Name": "Vietnam",
+    "Type": 0,
+    "CountryCode": "VN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 164,
+    "Name": "French Southern and Antarctic Lands",
+    "Type": 0,
+    "CountryCode": "TF",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 165,
+    "Name": "Iraq",
+    "Type": 0,
+    "CountryCode": "IQ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 166,
+    "Name": "Libya",
+    "Type": 0,
+    "CountryCode": "LY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 167,
+    "Name": "Portugal",
+    "Type": 0,
+    "CountryCode": "PT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 168,
+    "Name": "Pakistan",
+    "Type": 0,
+    "CountryCode": "PK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 169,
+    "Name": "Maldives",
+    "Type": 0,
+    "CountryCode": "MV",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 170,
+    "Name": "Morocco",
+    "Type": 0,
+    "CountryCode": "MA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 171,
+    "Name": "Bosnia and Herzegovina",
+    "Type": 0,
+    "CountryCode": "BA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 172,
+    "Name": "Samoa",
+    "Type": 0,
+    "CountryCode": "WS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 173,
+    "Name": "Palestine",
+    "Type": 0,
+    "CountryCode": "PS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 174,
+    "Name": "Oman",
+    "Type": 0,
+    "CountryCode": "OM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 175,
+    "Name": "Bahrain",
+    "Type": 0,
+    "CountryCode": "BH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 176,
+    "Name": "United States",
+    "Type": 0,
+    "CountryCode": "US",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 177,
+    "Name": "Puerto Rico",
+    "Type": 0,
+    "CountryCode": "PR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 178,
+    "Name": "British Indian Ocean Territory",
+    "Type": 0,
+    "CountryCode": "IO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 179,
+    "Name": "Jersey",
+    "Type": 0,
+    "CountryCode": "JE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 180,
+    "Name": "North Macedonia",
+    "Type": 0,
+    "CountryCode": "MK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 181,
+    "Name": "Tunisia",
+    "Type": 0,
+    "CountryCode": "TN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 182,
+    "Name": "Trinidad and Tobago",
+    "Type": 0,
+    "CountryCode": "TT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 183,
+    "Name": "Estonia",
+    "Type": 0,
+    "CountryCode": "EE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 184,
+    "Name": "Singapore",
+    "Type": 0,
+    "CountryCode": "SG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 185,
+    "Name": "Panama",
+    "Type": 0,
+    "CountryCode": "PA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 186,
+    "Name": "Switzerland",
+    "Type": 0,
+    "CountryCode": "CH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 187,
+    "Name": "Uruguay",
+    "Type": 0,
+    "CountryCode": "UY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 188,
+    "Name": "Tajikistan",
+    "Type": 0,
+    "CountryCode": "TJ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 189,
+    "Name": "Taiwan",
+    "Type": 0,
+    "CountryCode": "TW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 190,
+    "Name": "South Africa",
+    "Type": 0,
+    "CountryCode": "ZA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 191,
+    "Name": "Liechtenstein",
+    "Type": 0,
+    "CountryCode": "LI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 192,
+    "Name": "Brazil",
+    "Type": 0,
+    "CountryCode": "BR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 193,
+    "Name": "Armenia",
+    "Type": 0,
+    "CountryCode": "AM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 194,
+    "Name": "Georgia",
+    "Type": 0,
+    "CountryCode": "GE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 195,
+    "Name": "\u00C5land Islands",
+    "Type": 0,
+    "CountryCode": "AX",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 196,
+    "Name": "Qatar",
+    "Type": 0,
+    "CountryCode": "QA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 197,
+    "Name": "Dominica",
+    "Type": 0,
+    "CountryCode": "DM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 198,
+    "Name": "Ukraine",
+    "Type": 0,
+    "CountryCode": "UA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 199,
+    "Name": "Guinea",
+    "Type": 0,
+    "CountryCode": "GN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 200,
+    "Name": "Macau",
+    "Type": 0,
+    "CountryCode": "MO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 201,
+    "Name": "Western Sahara",
+    "Type": 0,
+    "CountryCode": "EH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 202,
+    "Name": "Czechia",
+    "Type": 0,
+    "CountryCode": "CZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 203,
+    "Name": "Austria",
+    "Type": 0,
+    "CountryCode": "AT",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 204,
+    "Name": "Saint Kitts and Nevis",
+    "Type": 0,
+    "CountryCode": "KN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 205,
+    "Name": "Saint Lucia",
+    "Type": 0,
+    "CountryCode": "LC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 206,
+    "Name": "Yemen",
+    "Type": 0,
+    "CountryCode": "YE",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 207,
+    "Name": "Rwanda",
+    "Type": 0,
+    "CountryCode": "RW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 208,
+    "Name": "Monaco",
+    "Type": 0,
+    "CountryCode": "MC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 209,
+    "Name": "S\u00E3o Tom\u00E9 and Pr\u00EDncipe",
+    "Type": 0,
+    "CountryCode": "ST",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 210,
+    "Name": "Republic of the Congo",
+    "Type": 0,
+    "CountryCode": "CG",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 211,
+    "Name": "Paraguay",
+    "Type": 0,
+    "CountryCode": "PY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 212,
+    "Name": "Bouvet Island",
+    "Type": 0,
+    "CountryCode": "BV",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 213,
+    "Name": "Mozambique",
+    "Type": 0,
+    "CountryCode": "MZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 214,
+    "Name": "France",
+    "Type": 0,
+    "CountryCode": "FR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 215,
+    "Name": "Eswatini",
+    "Type": 0,
+    "CountryCode": "SZ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 216,
+    "Name": "Barbados",
+    "Type": 0,
+    "CountryCode": "BB",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 217,
+    "Name": "Spain",
+    "Type": 0,
+    "CountryCode": "ES",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 218,
+    "Name": "Thailand",
+    "Type": 0,
+    "CountryCode": "TH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 219,
+    "Name": "Guinea-Bissau",
+    "Type": 0,
+    "CountryCode": "GW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 220,
+    "Name": "Angola",
+    "Type": 0,
+    "CountryCode": "AO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 221,
+    "Name": "India",
+    "Type": 0,
+    "CountryCode": "IN",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 222,
+    "Name": "Martinique",
+    "Type": 0,
+    "CountryCode": "MQ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 223,
+    "Name": "New Caledonia",
+    "Type": 0,
+    "CountryCode": "NC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 224,
+    "Name": "Seychelles",
+    "Type": 0,
+    "CountryCode": "SC",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 225,
+    "Name": "Falkland Islands",
+    "Type": 0,
+    "CountryCode": "FK",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 226,
+    "Name": "United Kingdom",
+    "Type": 0,
+    "CountryCode": "GB",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 227,
+    "Name": "Fiji",
+    "Type": 0,
+    "CountryCode": "FJ",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 228,
+    "Name": "San Marino",
+    "Type": 0,
+    "CountryCode": "SM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 229,
+    "Name": "Mali",
+    "Type": 0,
+    "CountryCode": "ML",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 230,
+    "Name": "Canada",
+    "Type": 0,
+    "CountryCode": "CA",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 231,
+    "Name": "Jamaica",
+    "Type": 0,
+    "CountryCode": "JM",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 232,
+    "Name": "Nauru",
+    "Type": 0,
+    "CountryCode": "NR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 233,
+    "Name": "Indonesia",
+    "Type": 0,
+    "CountryCode": "ID",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 234,
+    "Name": "Guam",
+    "Type": 0,
+    "CountryCode": "GU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 235,
+    "Name": "Ivory Coast",
+    "Type": 0,
+    "CountryCode": "CI",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 236,
+    "Name": "Kuwait",
+    "Type": 0,
+    "CountryCode": "KW",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 237,
+    "Name": "Philippines",
+    "Type": 0,
+    "CountryCode": "PH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 238,
+    "Name": "Guyana",
+    "Type": 0,
+    "CountryCode": "GY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 239,
+    "Name": "Hungary",
+    "Type": 0,
+    "CountryCode": "HU",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 240,
+    "Name": "Mexico",
+    "Type": 0,
+    "CountryCode": "MX",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 241,
+    "Name": "North Korea",
+    "Type": 0,
+    "CountryCode": "KP",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 242,
+    "Name": "Romania",
+    "Type": 0,
+    "CountryCode": "RO",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 243,
+    "Name": "Suriname",
+    "Type": 0,
+    "CountryCode": "SR",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 244,
+    "Name": "American Samoa",
+    "Type": 0,
+    "CountryCode": "AS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 245,
+    "Name": "Nepal",
+    "Type": 0,
+    "CountryCode": "NP",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 246,
+    "Name": "Chad",
+    "Type": 0,
+    "CountryCode": "TD",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 247,
+    "Name": "Serbia",
+    "Type": 0,
+    "CountryCode": "RS",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 248,
+    "Name": "Cambodia",
+    "Type": 0,
+    "CountryCode": "KH",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 249,
+    "Name": "Malaysia",
+    "Type": 0,
+    "CountryCode": "MY",
+    "ParentLocationId": null
+  },
+  {
+    "Id": 250,
+    "Name": "Cyprus",
+    "Type": 0,
+    "CountryCode": "CY",
+    "ParentLocationId": null
+  }
+]

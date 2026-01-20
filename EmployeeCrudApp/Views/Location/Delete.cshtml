@@ -1,0 +1,34 @@
+@model EmployeeCrudApp.Models.Location
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Delete Location"];
+}
+
+<div class="row justify-content-center mt-5 text-dark">
+    <div class="col-md-5">
+        <div class="card glass-card border-0 shadow-lg rounded-4 p-4 text-center">
+            <div class="mb-4">
+                <div class="icon-circle bg-danger bg-opacity-25 text-danger mx-auto mb-3" style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-exclamation-triangle-fill fs-3"></i>
+                </div>
+                <h2 class="fw-bold text-danger">@Localizer["Delete Location?"]</h2>
+                <p class="text-muted">@Localizer["Are you sure you want to remove this location from your news database?"]</p>
+            </div>
+
+            <div class="bg-light rounded-3 p-3 mb-4 text-start">
+                <div class="fw-bold fs-5">@Model.Name</div>
+                <div class="small text-muted text-uppercase">@Localizer[Model.Type.ToString()] @(string.IsNullOrEmpty(Model.CountryCode) ? "" : $"({Model.CountryCode})")</div>
+            </div>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-danger rounded-pill py-2 shadow-sm fw-bold">@Localizer["Delete Location"]</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary rounded-pill py-2">@Localizer["Cancel"]</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

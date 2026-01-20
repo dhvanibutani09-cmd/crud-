@@ -1,0 +1,123 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Localizer["News Search Results"];
+    var query = ViewBag.Query as string ?? "";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 text-dark">
+        <div>
+            <h1 class="mb-0 fw-bold">@Localizer["News Search"]</h1>
+            <p class="text-muted small mb-0">@Localizer["Searching for"]: <span class="fw-bold text-primary">"@query"</span></p>
+        </div>
+        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-dark rounded-pill px-4">
+            <i class="bi bi-arrow-left me-2"></i> @Localizer["Back to Dashboard"]
+        </a>
+    </div>
+
+    <div class="row g-4" id="search-results-container">
+        <!-- Results will be injected here -->
+        <div class="col-12 text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">@Localizer["Loading..."]</span>
+            </div>
+            <p class="mt-2 text-muted">@Localizer["Finding the latest news..."]</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .news-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+    }
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .object-fit-cover {
+        object-fit: cover;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        async function fetchSearchResults(query) {
+            const container = document.getElementById('search-results-container');
+            if (!query) {
+                container.innerHTML = '<div class="col-12 text-center py-5"><p class="text-muted">@Localizer["Please enter a search term."]</p></div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/News/GetNews?query=${encodeURIComponent(query)}`);
+                const data = await response.json();
+
+                if (data.status === 'ok' && data.articles) {
+                    if (data.articles.length === 0) {
+                        container.innerHTML = '<div class="col-12 text-center py-5"><p class="text-muted">@Localizer["No news found for this search."]</p></div>';
+                        return;
+                    }
+
+                    let html = '';
+                    data.articles.forEach(article => {
+                        const imgUrl = article.urlToImage || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=640&auto=format&fit=crop';
+                        const culture = window.APP_CULTURE || 'en-US';
+                        const date = new Date(article.publishedAt).toLocaleDateString(culture, { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        });
+
+                        html += `
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card h-100 shadow-sm rounded-4 overflow-hidden news-card">
+                                    <div class="position-relative">
+                                        <img src="${imgUrl}" class="card-img-top object-fit-cover" alt="News" style="height: 200px;" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=640&auto=format&fit=crop'">
+                                        <span class="position-absolute top-0 end-0 m-3 badge bg-danger rounded-pill shadow-sm">${article.source.name}</span>
+                                    </div>
+                                    <div class="card-body p-4 d-flex flex-column">
+                                        <h5 class="card-title fw-bold mb-3 line-clamp-2">${article.title}</h5>
+                                        <p class="card-text text-muted small mb-4 line-clamp-3">${article.description || ''}</p>
+                                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                                            <span class="text-muted smaller"><i class="bi bi-calendar3 me-1"></i> ${date}</span>
+                                            <a href="${article.url}" target="news_article" class="btn btn-sm btn-primary rounded-pill px-3">
+                                                @Localizer["Read More"] <i class="bi bi-arrow-right-short"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = `<div class="col-12 text-center py-5 text-danger"><i class="bi bi-exclamation-triangle fs-1 d-block mb-3"></i><p>${data.message || '@Localizer["Error loading news."]'}</p></div>`;
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                container.innerHTML = '<div class="col-12 text-center py-5 text-danger"><p>@Localizer["An unexpected error occurred while fetching news."]</p></div>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchSearchResults('@query');
+        });
+    </script>
+}

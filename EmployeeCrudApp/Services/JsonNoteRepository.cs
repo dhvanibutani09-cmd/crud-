@@ -12,48 +12,55 @@ public class JsonNoteRepository : INoteRepository
         _filePath = Path.Combine(webHostEnvironment.ContentRootPath, "notes.json");
     }
 
-    public IEnumerable<Note> GetAll()
+    public IEnumerable<Note> GetAll(string userId)
     {
         if (!File.Exists(_filePath)) return Enumerable.Empty<Note>();
         var json = File.ReadAllText(_filePath);
-        return JsonSerializer.Deserialize<List<Note>>(json) ?? new List<Note>();
+        var allNotes = JsonSerializer.Deserialize<List<Note>>(json) ?? new List<Note>();
+        return allNotes.Where(n => n.UserId == userId);
     }
 
-    public Note? GetById(int id)
+    public Note? GetById(int id, string userId)
     {
-        return GetAll().FirstOrDefault(n => n.Id == id);
+        return GetAll(userId).FirstOrDefault(n => n.Id == id);
     }
 
     public void Add(Note note)
     {
-        var notes = GetAll().ToList();
-        note.Id = notes.Any() ? notes.Max(n => n.Id) + 1 : 1;
+        var allNotes = LoadAll();
+        note.Id = allNotes.Any() ? allNotes.Max(n => n.Id) + 1 : 1;
         note.CreatedAt = DateTime.Now;
-        notes.Add(note);
-        SaveAll(notes);
+        allNotes.Add(note);
+        SaveAll(allNotes);
     }
 
-    public void Update(Note note)
+    public void Update(Note note, string userId)
     {
-        var notes = GetAll().ToList();
-        var index = notes.FindIndex(n => n.Id == note.Id);
+        var allNotes = LoadAll();
+        var index = allNotes.FindIndex(n => n.Id == note.Id && n.UserId == userId);
         if (index != -1)
         {
-            notes[index].Text = note.Text;
-            // Keep original CreatedAt
-            SaveAll(notes);
+            allNotes[index].Text = note.Text;
+            SaveAll(allNotes);
         }
     }
 
-    public void Delete(int id)
+    public void Delete(int id, string userId)
     {
-        var notes = GetAll().ToList();
-        var note = notes.FirstOrDefault(n => n.Id == id);
+        var allNotes = LoadAll();
+        var note = allNotes.FirstOrDefault(n => n.Id == id && n.UserId == userId);
         if (note != null)
         {
-            notes.Remove(note);
-            SaveAll(notes);
+            allNotes.Remove(note);
+            SaveAll(allNotes);
         }
+    }
+
+    private List<Note> LoadAll()
+    {
+        if (!File.Exists(_filePath)) return new List<Note>();
+        var json = File.ReadAllText(_filePath);
+        return JsonSerializer.Deserialize<List<Note>>(json) ?? new List<Note>();
     }
 
     private void SaveAll(List<Note> notes)

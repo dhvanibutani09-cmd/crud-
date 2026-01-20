@@ -33,5 +33,19 @@
     "Age": 23,
     "Email": "hdk9j@airsworld.net",
     "Password": "11111"
+  },
+  {
+    "Id": 7,
+    "Name": "dhvani",
+    "Age": 0,
+    "Email": "projtest28@gmail.com",
+    "Password": "1111"
+  },
+  {
+    "Id": 8,
+    "Name": "qwe",
+    "Age": 0,
+    "Email": "cidaya7882@dretnar.com",
+    "Password": "1212"
   }
 ]

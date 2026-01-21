@@ -41,3 +41,18 @@ body {
 .form-floating>.form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Translation Loader */
+#translation-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}

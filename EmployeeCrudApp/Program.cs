@@ -41,6 +41,8 @@ builder.Services.AddScoped<EmployeeCrudApp.Services.INoteRepository, EmployeeCru
 builder.Services.AddScoped<EmployeeCrudApp.Services.ILocationRepository, EmployeeCrudApp.Services.JsonLocationRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.IEmailService, EmployeeCrudApp.Services.SmtpEmailService>();
 builder.Services.AddHttpClient();
+builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<EmployeeCrudApp.Services.ITranslationService, EmployeeCrudApp.Services.GoogleTranslationService>();
 
 builder.Services.AddSession(options =>
 {

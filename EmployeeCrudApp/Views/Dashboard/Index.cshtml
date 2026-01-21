@@ -602,6 +602,10 @@
                         </span>
                     </div>
                 `;
+                // Trigger translation for the weather card content
+                if (window.TranslationManager) {
+                    window.TranslationManager.translateElement(content);
+                }
             } catch (error) {
                 content.innerHTML = `
                     <div class="alert alert-danger py-3 px-3 small rounded-4 mx-2 text-center shadow-sm">
@@ -748,6 +752,10 @@
                                 <div class="small text-muted">@Localizer["in"] ${countryName}</div>
                             </div>
                         `;
+                        // Trigger translation for currency result
+                        if (window.TranslationManager) {
+                            window.TranslationManager.translateElement(resDiv);
+                        }
                     } else {
                         resDiv.innerHTML = '<div class="text-warning small text-center"><i class="bi bi-exclamation-circle me-1"></i> @Localizer["Exchange rate unavailable"]</div>';
                         console.warn(`Rate not found for ${toCode}`);
@@ -840,6 +848,11 @@
                 };
                 resultsDiv.appendChild(btn);
             });
+            
+            // Trigger translation for search results
+            if (window.TranslationManager) {
+                window.TranslationManager.translateElement(resultsDiv);
+            }
         }
 
         function updateTimezoneFromData(item, updateLabel) {
@@ -852,9 +865,18 @@
 
 
 
+        function getCurrentCulture() {
+            // Prefer TranslationManager's language if available, else fallback to server culture
+            if (window.TranslationManager && window.TranslationManager.currentLang) {
+                // Formatting needs full locale sometimes, but 'es', 'fr' etc usually work for Date
+                return window.TranslationManager.currentLang; 
+            }
+            return window.APP_CULTURE || 'en-US';
+        }
+
         function updateTimes() {
             const now = new Date();
-            const culture = window.APP_CULTURE || 'en-US';
+            const culture = getCurrentCulture();
             document.getElementById('local-time').innerText = now.toLocaleTimeString(culture, { 
                 hour: '2-digit', 
                 minute: '2-digit', 
@@ -879,7 +901,7 @@
             }
 
             const now = new Date();
-            const culture = window.APP_CULTURE || 'en-US';
+            const culture = getCurrentCulture();
             try {
                 // Time
                 const targetTimeStr = now.toLocaleTimeString(culture, { 
@@ -897,8 +919,8 @@
                 targetDateDiv.innerText = targetDateStr;
 
                 // Relative Day logic
-                const localDateStr = now.toLocaleDateString(culture);
-                const targetDateSimpleStr = now.toLocaleDateString(culture, { timeZone: timezone });
+                const localDateStr = now.toLocaleDateString('en-US'); // Keep calculation logic stable in EN
+                const targetDateSimpleStr = now.toLocaleDateString('en-US', { timeZone: timezone });
                 
                 const localDate = new Date(localDateStr);
                 const targetDate = new Date(targetDateSimpleStr);
@@ -907,14 +929,23 @@
                 const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
 
                 relativeDayDiv.className = 'badge rounded-pill mt-2';
+                let dayText = "";
                 if (diffDays === 0) {
                     relativeDayDiv.innerText = "";
                 } else if (diffDays > 0) {
-                    relativeDayDiv.innerText = "@Localizer["Tomorrow"]";
+                    dayText = "@Localizer["Tomorrow"]";
                     relativeDayDiv.classList.add('badge-tomorrow');
                 } else { // diffDays < 0
-                    relativeDayDiv.innerText = "@Localizer["Yesterday"]";
+                    dayText = "@Localizer["Yesterday"]";
                     relativeDayDiv.classList.add('badge-yesterday');
+                }
+                
+                if(dayText) {
+                    relativeDayDiv.innerText = dayText;
+                    // Trigger dynamic translation only for the relative day badge text
+                    if (window.TranslationManager) {
+                        window.TranslationManager.translateElement(relativeDayDiv);
+                    }
                 }
 
             } catch (e) {
@@ -991,6 +1022,11 @@
 
                     carouselHtml += `</div></div>`;
                     container.innerHTML = carouselHtml;
+                    
+                    // Trigger translation for news container
+                    if (window.TranslationManager) {
+                        window.TranslationManager.translateElement(container);
+                    }
                 }
             } catch (error) {
                 console.error('News error:', error);
@@ -1157,6 +1193,11 @@
             });
             html += '</div>';
             container.innerHTML = html;
+            
+            // Trigger translation for country list
+            if (window.TranslationManager) {
+                window.TranslationManager.translateElement(container);
+            }
         }
 
         function filterCountries(query) {
@@ -1252,6 +1293,10 @@
                     </div>
                 `;
                 container.scrollTop = 0; // Reset scroll
+                // Trigger translation for country details
+                if (window.TranslationManager) {
+                    window.TranslationManager.translateElement(container);
+                }
             } catch (error) {
                 console.error('Country details error:', error);
                 container.innerHTML = `<div class="text-center py-5 text-muted small">${getUiLabel('ErrorLoadDetails')}</div>`;

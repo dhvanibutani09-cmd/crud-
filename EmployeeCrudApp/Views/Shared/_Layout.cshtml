@@ -42,12 +42,16 @@
                                 <option value="fr">🇫🇷 French</option>
                                 <option value="de">🇩🇪 German</option>
                                 <option value="hi">🇮🇳 Hindi</option>
+                                <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
                                 <option value="zh">🇨🇳 Chinese</option>
                                 <option value="ja">🇯🇵 Japanese</option>
                                 <option value="ar">🇸🇦 Arabic</option>
                                 <option value="ru">🇷🇺 Russian</option>
                                 <option value="pt">🇵🇹 Portuguese</option>
                             </select>
+                        </li>
+                        <li class="nav-item me-2">
+                             <button class="btn btn-outline-secondary theme-toggle border-0" type="button">☀️</button>
                         </li>
 
                         @if (User.Identity?.IsAuthenticated == true)
@@ -84,13 +88,10 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/translation.js" asp-append-version="true"></script>
+    <script src="~/js/theme.js" asp-append-version="true"></script>
     
     <script>
-
-
         window.APP_CULTURE = '@System.Globalization.CultureInfo.CurrentCulture.Name';
-
-
     </script>
 
     <div id="translation-loader" style="display: none;">

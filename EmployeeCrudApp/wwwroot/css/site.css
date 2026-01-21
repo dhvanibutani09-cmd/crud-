@@ -8,6 +8,11 @@ html {
   }
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 .btn:focus,
 .btn:active:focus,
 .btn-link.nav-link:focus,
@@ -16,43 +21,218 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-.form-control {
-  color: black;
+:root {
+  --bg-color: #ffffff;
+  --bg-gradient: linear-gradient(to right, #ece9e6, #ffffff);
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, .125);
+  --input-bg: #ffffff;
+  --input-color: #212529;
+  --input-border: #ced4da;
+  --navbar-bg: #ffffff;
+  --navbar-text: rgba(0, 0, 0, .55);
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --bg-gradient: linear-gradient(to right, #141e30, #243b55);
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --card-border: #333;
+  --input-bg: #2d2d2d;
+  --input-color: #e0e0e0;
+  --input-border: #444;
+  --navbar-bg: #1e1e1e;
+  --navbar-text: #e0e0e0;
 }
 
 body {
   margin-bottom: 60px;
-  background: linear-gradient(to right, #ece9e6, #ffffff);
+  background: var(--bg-gradient);
+  color: var(--text-color);
   min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.form-floating>.form-control-plaintext::placeholder,
-.form-floating>.form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Overrides for dynamic theming */
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  color: var(--text-color);
 }
 
-.form-floating>.form-control-plaintext:focus::placeholder,
-.form-floating>.form-control:focus::placeholder {
-  text-align: start;
+.form-control,
+.form-select {
+  background-color: var(--input-bg);
+  color: var(--input-color);
+  border-color: var(--input-border);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--input-bg);
+  color: var(--input-color);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--navbar-text);
+}
+
+.navbar-light .navbar-brand {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .text-muted {
+  color: #a0a0a0 !important;
+}
+
+[data-theme="dark"] .text-dark {
+  color: #e0e0e0 !important;
+  /* Force text-dark to be light in dark mode */
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #1e1e1e !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .list-group-item {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--card-border);
+}
+
+[data-theme="dark"] .list-group-item-action:hover,
+[data-theme="dark"] .list-group-item-action:focus {
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+[data-theme="dark"] .table {
+  color: var(--text-color);
+  border-color: var(--card-border);
+}
+
+[data-theme="dark"] .border-bottom {
+  border-color: var(--card-border) !important;
+}
+
+/* Ensure icons in circles use correct contrast if needed, mostly handled by dedicated classes but verify */
+
+/* Glass Card - Moved from Index.cshtml */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .glass-card {
+  background: rgba(30, 30, 30, 0.6) !important;
+  /* Dark glass */
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .glass-card:hover {
+  background: rgba(30, 30, 30, 0.8) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Ensure form elements inside cards are visible */
+[data-theme="dark"] .form-control::placeholder,
+[data-theme="dark"] .form-select {
+  color: #aeaeae;
+}
+
+/* Fix for specific badges and backgrounds in Index.cshtml */
+[data-theme="dark"] .bg-primary.bg-opacity-10 {
+  background-color: rgba(13, 110, 253, 0.2) !important;
+}
+
+[data-theme="dark"] .bg-success.bg-opacity-10 {
+  background-color: rgba(25, 135, 84, 0.2) !important;
+}
+
+[data-theme="dark"] .bg-warning.bg-opacity-10 {
+  background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+[data-theme="dark"] .bg-info.bg-opacity-10 {
+  background-color: rgba(13, 202, 240, 0.2) !important;
+}
+
+[data-theme="dark"] .bg-danger.bg-opacity-10 {
+  background-color: rgba(220, 53, 69, 0.2) !important;
+}
+
+/* Fix Google Maps link hover */
+[data-theme="dark"] .location-info {
+  background-color: #2d2d2d !important;
+  border-color: #444 !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .location-info:hover {
+  background-color: #3d3d3d !important;
 }
 
 /* Translation Loader */
 #translation-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 9999;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+/* Sticky Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  /* Vertically center the text there */
+}
+
+/* Fix Amount Input Color in Dark Mode */
+/* Fix Amount Input Color in Dark Mode */
+[data-theme="dark"] #amount {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] #amount::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Fix Currency Result Text in Dark Mode */
+[data-theme="dark"] #currency-result,
+[data-theme="dark"] #currency-result .h3,
+[data-theme="dark"] #currency-result h3 {
+  color: #ffffff !important;
 }

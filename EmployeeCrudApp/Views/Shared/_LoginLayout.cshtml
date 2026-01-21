@@ -13,22 +13,30 @@
     </script>
 </head>
 <body class="bg-light">
-    <div style="position: absolute; top: 15px; right: 15px; z-index: 1000;">
-        <select id="languageSelect" class="form-select form-select-sm" onchange="changeLanguage(this.value)">
-            <option value="en-US">English</option>
-            <option value="hi-IN">Hindi</option>
-            <option value="gu-IN">Gujarati</option>
-            <option value="bn-IN">Bengali</option>
-            <option value="mr-IN">Marathi</option>
-            <option value="ta-IN">Tamil</option>
-            <option value="te-IN">Telugu</option>
-            <option value="kn-IN">Kannada</option>
-            <option value="ml-IN">Malayalam</option>
-            <option value="pa-IN">Punjabi</option>
-            <option value="ur-IN">Urdu</option>
-            <option value="or-IN">Odia</option>
-            <option value="as-IN">Assamese</option>
+    <!-- Language Selector -->
+    <div style="position: absolute; top: 15px; right: 15px; z-index: 1000; display: flex; align-items: center; gap: 10px;">
+        <button class="btn btn-sm btn-outline-secondary theme-toggle border-0" type="button" style="font-size: 1.2rem;">☀️</button>
+        <select id="language-selector" class="form-select form-select-sm" style="width: auto; cursor: pointer;">
+            <option value="en">🇺🇸 English</option>
+            <option value="es">🇪🇸 Spanish</option>
+            <option value="fr">🇫🇷 French</option>
+            <option value="de">🇩🇪 German</option>
+            <option value="hi">🇮🇳 Hindi</option>
+            <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+            <option value="zh">🇨🇳 Chinese</option>
+            <option value="ja">🇯🇵 Japanese</option>
+            <option value="ar">🇸🇦 Arabic</option>
+            <option value="ru">🇷🇺 Russian</option>
+            <option value="pt">🇵🇹 Portuguese</option>
         </select>
+    </div>
+
+    <!-- Translation Loader Overlay -->
+    <div id="translation-loader" class="translation-loader" style="display: none;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="mt-3 text-white fw-bold">Translating content...</div>
     </div>
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
@@ -40,33 +48,9 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/translation.js" asp-append-version="true"></script>
+    <script src="~/js/theme.js" asp-append-version="true"></script>
     
-    <script>
-        function changeLanguage(culture) {
-            localStorage.setItem('culture', culture);
-            document.cookie = ".AspNetCore.Culture=c=" + culture + "|uic=" + culture + ";path=/";
-            location.reload();
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const getCookie = (name) => {
-                const value = `; ${document.cookie}`;
-                const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-            }
-            
-            let cookieCultureValue = getCookie('.AspNetCore.Culture');
-            let currentCulture = 'en-US';
-            if (cookieCultureValue) {
-                let match = cookieCultureValue.match(/c=([^|]+)/);
-                if (match) {
-                    currentCulture = match[1];
-                }
-            }
-            document.getElementById('languageSelect').value = currentCulture;
-        });
-    </script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

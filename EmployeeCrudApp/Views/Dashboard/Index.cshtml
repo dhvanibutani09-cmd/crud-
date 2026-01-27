@@ -16,6 +16,8 @@
     <div class="row g-4">
         <!-- Weather Card -->
         <div class="col-md-4">
+
+
             <div class="card h-100 shadow border-0 rounded-4 glass-card">
                 <div class="card-body p-4 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -52,6 +54,8 @@
 
         <!-- Currency Conversion Card -->
         <div class="col-md-4">
+
+
             <div class="card h-100 shadow border-0 rounded-4 glass-card">
                 <div class="card-body p-4 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -95,6 +99,8 @@
 
         <!-- Time Conversion Card -->
         <div class="col-md-4">
+
+
             <div class="card h-100 shadow border-0 rounded-4 glass-card overflow-visible">
                 <div class="card-body p-4 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -136,6 +142,8 @@
         </div>
         <!-- News Card -->
         <div class="col-md-4">
+
+
             <div class="card h-100 shadow border-0 rounded-4 glass-card">
                 <div class="card-body p-4 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -183,6 +191,8 @@
 
         <!-- Country Search Card -->
         <div class="col-md-4">
+
+
             <div class="card h-100 shadow border-0 rounded-4 glass-card">
                 <div class="card-body p-4 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -219,6 +229,8 @@
 
         <!-- Notes Card (New Widget) -->
         <div class="col-md-4">
+
+
             <div class="card h-100 shadow border-0 rounded-4 glass-card">
                 <div class="card-body p-4 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -268,8 +280,189 @@
                 </div>
             </div>
         </div>
+        <!-- Habit Tracker Card -->
+        <div class="col-md-4">
+
+
+
+            <div class="card h-100 shadow border-0 rounded-4 glass-card">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-circle bg-success text-white me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="card-title fw-bold mb-0">@Localizer["Habit Tracker"]</h6>
+                                <p class="text-muted small mb-0">@Localizer["Build better habits"]</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-success rounded-pill px-4 shadow-sm fw-bold text-white small" data-bs-toggle="modal" data-bs-target="#addHabitModal">
+                            <i class="bi bi-plus-lg me-1"></i> @Localizer["Add"]
+                        </button>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <!-- Daily Progress Bar -->
+                        @{
+                            var totalHabits = Model.Habits.Count;
+                            var completedToday = Model.Habits.Count(h => h.IsCompletedToday);
+                            var progress = totalHabits > 0 ? (int)((double)completedToday / totalHabits * 100) : 0;
+                        }
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="fw-bold text-muted">@Localizer["All Progress"]</span>
+                                <span class="fw-bold text-success">@progress%</span>
+                            </div>
+                            <div class="progress rounded-pill" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: @progress%" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <!-- Habits List -->
+                        <div id="habits-container" class="d-flex flex-column gap-2" style="max-height: 250px; overflow-y: auto;">
+                            @if (Model.Habits.Any())
+                            {
+                                @foreach (var habit in Model.Habits)
+                                {
+                                    // Visibility Logic:
+                                    // 1. Must be after or on StartDate
+                                    if (DateTime.Today < habit.StartDate.Date) continue;
+                                    
+                                    // 2. If Custom, must match today's day of week
+                                    if (habit.Frequency == "Custom" && !habit.CustomDays.Contains(DateTime.Today.DayOfWeek)) continue;
+
+                                    <div class="habit-item p-3 rounded-4 bg-light border d-flex align-items-center justify-content-between @(habit.IsCompletedToday ? "border-success bg-success bg-opacity-10" : "")">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="form-check m-0">
+                                                <input class="form-check-input" type="checkbox" onchange="toggleHabit(@habit.Id)" @(habit.IsCompletedToday ? "checked" : "") style="cursor: pointer; width: 1.2em; height: 1.2em;">
+                                            </div>
+                                            <div>
+                                                <div class="fw-bold text-dark mb-0 form-check-label @(habit.IsCompletedToday ? "text-decoration-line-through text-muted" : "")">@habit.Name</div>
+                                                @if (!string.IsNullOrEmpty(habit.Description))
+                                                {
+                                                    <div class="smaller text-muted">@habit.Description</div>
+                                                }
+                                                <!-- Debug/Info about schedule -->
+                                                <div class="smaller text-muted opacity-75" style="font-size: 0.7rem;">
+                                                    <i class="bi bi-calendar-event me-1"></i>
+                                                    @(habit.Frequency == "Daily" ? Localizer["Daily"] : string.Join(", ", habit.CustomDays.Select(d => d.ToString().Substring(0, 3))))
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            @if (habit.CurrentStreak > 0)
+                                            {
+                                                <span class="badge rounded-pill bg-warning text-dark border border-warning shadow-sm" title="@Localizer["Current Streak"]">
+                                                    <i class="bi bi-fire me-1 text-danger"></i>@habit.CurrentStreak
+                                                </span>
+                                            }
+                                            <button class="btn btn-link btn-sm text-danger p-0 ms-1 opacity-50 hover-opacity-100" onclick="deleteHabit(@habit.Id)" title="@Localizer["Delete Habit"]">
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="text-center py-4">
+                                    <p class="text-muted small mb-0">@Localizer["No habits yet. Start tracking today!"]</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Numbers Card -->
+        <div class="col-md-4">
+
+
+
+            <div class="card h-100 shadow border-0 rounded-4 glass-card">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-circle bg-danger text-white me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                <i class="bi bi-shield-fill-plus"></i>
+                            </div>
+                            <div>
+                                <h6 class="card-title fw-bold mb-0">@Localizer["Emergency Numbers"]</h6>
+                                <p class="text-muted small mb-0">@Localizer["Lifeline contacts"]</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="flex-grow-1">
+                        <div class="mb-4">
+                             <div class="input-group input-group-sm shadow-sm rounded-pill overflow-hidden">
+                                <span class="input-group-text border-0 bg-light px-3"><i class="bi bi-search text-muted"></i></span>
+                                <input type="text" id="emergency-country-search" class="form-control border-0 px-2" placeholder="@Localizer["Search country (e.g. India)"]" oninput="filterEmergencyCountries(this.value)">
+                            </div>
+                            <div id="emergency-country-list" class="list-group list-group-flush shadow-sm rounded-4 overflow-hidden d-none position-absolute w-100" style="z-index: 1000; max-height: 200px; overflow-y: auto; background: white; margin-top: 5px; border: 1px solid #eee;">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+    
+                        <div id="emergency-display" class="d-none">
+                            <div class="text-center mb-3">
+                                <img id="emergency-flag" src="" class="shadow-sm rounded-2 mb-2" style="width: 40px; height: 30px; object-fit: cover;">
+                                <h6 id="emergency-country-name" class="fw-bold mb-0"></h6>
+                            </div>
+                            
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <div class="p-2 rounded-3 bg-primary bg-opacity-10 border border-primary border-opacity-10 d-flex justify-content-between align-items-center">
+                                         <div class="d-flex align-items-center">
+                                            <i class="bi bi-shield-shaded text-primary me-3 fs-5"></i>
+                                            <span class="fw-medium text-dark">@Localizer["Police"]</span>
+                                        </div>
+                                        <div id="emer-police" class="h5 fw-bold text-primary mb-0">--</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="p-2 rounded-3 bg-danger bg-opacity-10 border border-danger border-opacity-10 d-flex justify-content-between align-items-center">
+                                         <div class="d-flex align-items-center">
+                                            <i class="bi bi-hospital-fill text-danger me-3 fs-5"></i>
+                                            <span class="fw-medium text-dark">@Localizer["Ambulance"]</span>
+                                        </div>
+                                        <div id="emer-ambulance" class="h5 fw-bold text-danger mb-0">--</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="p-2 rounded-3 bg-warning bg-opacity-10 border border-warning border-opacity-10 d-flex justify-content-between align-items-center">
+                                         <div class="d-flex align-items-center">
+                                            <i class="bi bi-fire text-warning me-3 fs-5"></i>
+                                            <span class="fw-medium text-dark">@Localizer["Fire"]</span>
+                                        </div>
+                                        <div id="emer-fire" class="h5 fw-bold text-warning mb-0">--</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="p-2 rounded-3 bg-secondary bg-opacity-10 border border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                                         <div class="d-flex align-items-center">
+                                            <i class="bi bi-exclamation-triangle-fill text-secondary me-3 fs-5"></i>
+                                            <span class="fw-medium text-dark">@Localizer["General"]</span>
+                                        </div>
+                                        <div id="emer-general" class="h5 fw-bold text-secondary mb-0">--</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="emergency-placeholder" class="text-center py-4 text-muted opacity-50">
+                            <i class="bi bi-globe-americas fs-1 d-block mb-2"></i>
+                            <span class="small">@Localizer["Select a country to view numbers"]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <!-- Add Note Modal -->
 <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteModalLabel" aria-hidden="true">
@@ -309,6 +502,68 @@
         </div>
     </div>
 </div>
+
+    <!-- Add Habit Modal -->
+    <div class="modal fade" id="addHabitModal" tabindex="-1" aria-labelledby="addHabitModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="addHabitModalLabel">@Localizer["Add New Habit"]</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="habit-name" class="form-label small fw-bold text-muted">@Localizer["Habit Name"]</label>
+                        <input type="text" id="habit-name" class="form-control rounded-pill bg-light border-0 px-3" placeholder="@Localizer["e.g., Drink Water, Read Book"]">
+                    </div>
+                    <div class="mb-3">
+                        <label for="habit-desc" class="form-label small fw-bold text-muted">@Localizer["Description (Optional)"]</label>
+                        <input type="text" id="habit-desc" class="form-control rounded-pill bg-light border-0 px-3" placeholder="@Localizer["e.g., 2 liters daily"]">
+                    </div>
+                     
+                    <!-- Frequency Selection -->
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">@Localizer["Frequency"]</label>
+                        <div class="d-flex gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="habitFrequency" id="freqDaily" value="Daily" checked onchange="toggleCustomDays(false)">
+                                <label class="form-check-label" for="freqDaily">@Localizer["Daily"]</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="habitFrequency" id="freqCustom" value="Custom" onchange="toggleCustomDays(true)">
+                                <label class="form-check-label" for="freqCustom">@Localizer["Custom Days"]</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Days Checkboxes -->
+                    <div id="customDaysContainer" class="mb-3 d-none p-3 bg-light rounded-4">
+                         <div class="d-flex flex-wrap gap-2 justify-content-center">
+                            @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+                            {
+                                 // Skip 0 (Sunday) to put it at end if preferred, or just list them. Let's list Mon-Sun or Sun-Sat. Standard Enum is Sun=0.
+                                 // Let's rely on standard enum order but maybe display nicer short names.
+                                 <div class="form-check form-check-inline">
+                                    <input class="form-check-input custom-day-check" type="checkbox" id="day-@day" value="@day">
+                                    <label class="form-check-label small" for="day-@day">@day.ToString().Substring(0, 3)</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Start Date -->
+                    <div class="mb-3">
+                        <label for="habit-start-date" class="form-label small fw-bold text-muted">@Localizer["Start Date"]</label>
+                        <input type="date" id="habit-start-date" class="form-control rounded-pill bg-light border-0 px-3">
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
+                    <button type="button" class="btn btn-success rounded-pill px-4 text-white fw-bold" onclick="saveNewHabit()">@Localizer["Create Habit"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
 
@@ -395,6 +650,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 @section Scripts {
+    <script src="~/js/emergency_data.js"></script>
     <script>
         // --- Weather Logic ---
         async function detectLocationAndFetchWeather() {
@@ -1311,7 +1567,161 @@
             }
         }
 
+        // --- Habit Logic ---
+        function toggleCustomDays(show) {
+            const container = document.getElementById('customDaysContainer');
+            if (show) {
+                container.classList.remove('d-none');
+            } else {
+                container.classList.add('d-none');
+            }
+        }
+
+        async function saveNewHabit() {
+            const name = document.getElementById('habit-name').value;
+            const desc = document.getElementById('habit-desc').value;
+            const startDate = document.getElementById('habit-start-date').value;
+            
+            const isCustom = document.getElementById('freqCustom').checked;
+            const frequency = isCustom ? "Custom" : "Daily";
+            
+            let customDays = [];
+            if (isCustom) {
+                document.querySelectorAll('.custom-day-check:checked').forEach(cb => {
+                    customDays.push(cb.value);
+                });
+            }
+
+            if (!name.trim()) return;
+
+            try {
+                const response = await fetch('/Dashboard/AddHabit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `name=${encodeURIComponent(name)}&description=${encodeURIComponent(desc)}&frequency=${frequency}&customDays=${customDays.join(',')}&startDate=${startDate}`
+                });
+                const result = await response.json();
+                if (result.success) {
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Add habit error:', error);
+            }
+        }
+
+        async function toggleHabit(id) {
+            try {
+                const response = await fetch('/Dashboard/ToggleHabit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `id=${id}`
+                });
+                const result = await response.json();
+                if (result.success) {
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Toggle habit error:', error);
+            }
+        }
+
+        async function deleteHabit(id) {
+            if (!confirm('@Localizer["Are you sure you want to delete this habit?"]')) return;
+
+            try {
+                const response = await fetch('/Dashboard/DeleteHabit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `id=${id}`
+                });
+                const result = await response.json();
+                if (result.success) {
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Delete habit error:', error);
+            }
+        }
+
+        // --- Emergency Numbers Logic ---
+        let emergencyCountries = []; // Will share structure with allCountries roughly
+
+        async function initEmergencySection() {
+            // Need country list. If fetchAllCountries already ran, use it.
+            // If strictly needed, wait or check. 
+            // We can reuse 'allCountries' from World Countries logic if confirmed loaded
+            // Or just check if empty and re-fetch if needed.
+            
+            if (allCountries.length === 0) {
+              // Should be loaded by fetchAllCountries, but let's be safe
+               try {
+                  const response = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,cca3,translations'); 
+                  const data = await response.json();
+                  emergencyCountries = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+               } catch(e) { console.error(e); }
+            } else {
+                emergencyCountries = allCountries;
+            }
+        }
+
+        function filterEmergencyCountries(query) {
+             const listDiv = document.getElementById('emergency-country-list');
+             if (!query || query.length < 2) {
+                 listDiv.classList.add('d-none');
+                 return;
+             }
+             
+             // Use same translation helper
+             const filtered = emergencyCountries.filter(c => {
+                 const name = getTranslatedCountryName(c);
+                 return name.toLowerCase().includes(query.toLowerCase());
+             }).slice(0, 5); // Limit to 5
+             
+             if (filtered.length === 0) {
+                 listDiv.innerHTML = `<div class="p-2 small text-muted text-center">@Localizer["No results"]</div>`;
+                 listDiv.classList.remove('d-none');
+                 return;
+             }
+             
+             let html = '';
+             filtered.forEach(c => {
+                 const name = getTranslatedCountryName(c);
+                 html += `
+                    <button type="button" class="list-group-item list-group-item-action border-0 px-3 py-2 d-flex align-items-center" onclick="selectEmergencyCountry('${c.cca3}', '${name.replace(/'/g, "\\'")}', '${c.flags.svg}')">
+                        <img src="${c.flags.svg}" class="me-2 rounded-1 border" style="width: 20px; height: 15px; object-fit: cover;">
+                        <span class="small fw-medium">${name}</span>
+                    </button>
+                 `;
+             });
+             
+             listDiv.innerHTML = html;
+             listDiv.classList.remove('d-none');
+        }
+
+        function selectEmergencyCountry(cca3, name, flagUrl) {
+            document.getElementById('emergency-country-search').value = name;
+            document.getElementById('emergency-country-list').classList.add('d-none');
+            
+            document.getElementById('emergency-country-name').innerText = name;
+            document.getElementById('emergency-flag').src = flagUrl;
+            
+            const data = window.emergencyData[cca3] || { police: '112', ambulance: '112', fire: '112', general: '112' }; // Fallback to 112 (EU/GSM standard)
+            
+            // Check if specific data exists, if not maybe show "Not available" or standard
+            // My data set covers major ones.
+            
+            document.getElementById('emer-police').innerText = data.police || '--';
+            document.getElementById('emer-ambulance').innerText = data.ambulance || '--';
+            document.getElementById('emer-fire').innerText = data.fire || '--';
+            document.getElementById('emer-general').innerText = data.general || '--';
+            
+            document.getElementById('emergency-placeholder').classList.add('d-none');
+            document.getElementById('emergency-display').classList.remove('d-none');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            // ... existing listeners
+            setTimeout(initEmergencySection, 2000); // Give time for main country fetch
             detectLocationAndFetchWeather(); // Detect and fetch
             initCurrencies();
             // initTimezones(); REMOVED
@@ -1336,6 +1746,14 @@
             
             fetchNews();
             fetchAllCountries();
+            // Start listening for clicks outside to close dropdowns
+            document.addEventListener('click', function(event) {
+                const eList = document.getElementById('emergency-country-list');
+                const eInput = document.getElementById('emergency-country-search');
+                if (eList && !eList.contains(event.target) && event.target !== eInput) {
+                    eList.classList.add('d-none');
+                }
+            });
         });
     </script>
 }

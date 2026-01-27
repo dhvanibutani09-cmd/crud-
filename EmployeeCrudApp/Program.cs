@@ -39,6 +39,7 @@ builder.Services.AddScoped<EmployeeCrudApp.Services.IEmployeeRepository, Employe
 builder.Services.AddScoped<EmployeeCrudApp.Services.IUserRepository, EmployeeCrudApp.Services.JsonUserRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.INoteRepository, EmployeeCrudApp.Services.JsonNoteRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.ILocationRepository, EmployeeCrudApp.Services.JsonLocationRepository>();
+builder.Services.AddScoped<EmployeeCrudApp.Services.IHabitRepository, EmployeeCrudApp.Services.JsonHabitRepository>();
 builder.Services.AddScoped<EmployeeCrudApp.Services.IEmailService, EmployeeCrudApp.Services.SmtpEmailService>();
 builder.Services.AddHttpClient();
 builder.Services.AddMemoryCache();

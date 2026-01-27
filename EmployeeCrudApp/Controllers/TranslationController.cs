@@ -1,10 +1,13 @@
+
 using EmployeeCrudApp.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeCrudApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class TranslationController : ControllerBase
     {
         private readonly ITranslationService _translationService;

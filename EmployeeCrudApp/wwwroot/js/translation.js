@@ -5,8 +5,9 @@ class TranslationManager {
         // 1. Storage or Browser Detection
         const storedLang = localStorage.getItem('app_language');
         const browserLang = navigator.language.split('-')[0];
-        // Supported langs in our UI (approx list for auto-match)
-        const supported = ['en', 'es', 'fr', 'de', 'hi', 'zh', 'ja', 'ar', 'ru', 'pt'];
+        // Supported langs in our UI (expanded for regional support)
+        const supported = ['en', 'hi', 'gu', 'mr', 'bn', 'ta', 'es', 'fr', 'de'];
+
 
         // Auto-detect: Use stored, or browser if supported, else default to 'en'
         this.currentLang = storedLang || (supported.includes(browserLang) ? browserLang : 'en');
@@ -87,10 +88,11 @@ class TranslationManager {
         if (node.nodeType === Node.ELEMENT_NODE) {
             if (node.classList.contains('no-translate')) return false;
             // Ignore scripts, styles
-            const tags = ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'SELECT'];
+            const tags = ['SCRIPT', 'STYLE', 'NOSCRIPT'];
             if (tags.includes(node.tagName)) return false;
             return true;
         }
+
         return false;
     }
 
@@ -279,7 +281,24 @@ class TranslationManager {
                 }
             });
 
+            // Handle attributes like placeholders and titles
+            const elementsWithAttrs = document.querySelectorAll('[placeholder], [title]');
+            elementsWithAttrs.forEach(el => {
+                ['placeholder', 'title'].forEach(attr => {
+                    const original = el.getAttribute(`data-org-${attr}`) || el.getAttribute(attr);
+                    if (original && original.trim()) {
+                        if (!el.getAttribute(`data-org-${attr}`)) el.setAttribute(`data-org-${attr}`, original);
+
+                        const text = original.trim();
+                        if (langCache.has(text)) {
+                            el.setAttribute(attr, langCache.get(text));
+                        }
+                    }
+                });
+            });
+
         } catch (e) {
+
             console.error("TranslateNodes error", e);
         } finally {
             this.showLoading(false);

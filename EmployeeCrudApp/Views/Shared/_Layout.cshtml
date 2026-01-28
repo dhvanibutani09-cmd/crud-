@@ -36,20 +36,59 @@
                     </ul>
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item me-3">
-                            <select id="language-selector" class="form-select form-select-sm" style="width: auto; cursor: pointer;">
+                            <select id="language-selector" class="form-select form-select-sm rounded-pill border-0 shadow-sm px-3" style="width: auto; cursor: pointer; background-color: rgba(0,0,0,0.05);">
                                 <option value="en">🇺🇸 English</option>
-                                <option value="es">🇪🇸 Spanish</option>
-                                <option value="fr">🇫🇷 French</option>
-                                <option value="de">🇩🇪 German</option>
-                                <option value="hi">🇮🇳 Hindi</option>
-                                <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
-                                <option value="zh">🇨🇳 Chinese</option>
-                                <option value="ja">🇯🇵 Japanese</option>
-                                <option value="ar">🇸🇦 Arabic</option>
-                                <option value="ru">🇷🇺 Russian</option>
-                                <option value="pt">🇵🇹 Portuguese</option>
+                                <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+                                <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
+                                <option value="mr">🇮🇳 मराठी (Marathi)</option>
+                                <option value="bn">🇮🇳 বাংলা (Bengali)</option>
+                                <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+                                <option value="es">🇪🇸 Español</option>
+                                <option value="fr">🇫🇷 Français</option>
+                                <option value="de">🇩🇪 Deutsch</option>
                             </select>
                         </li>
+
+                        <li class="nav-item me-3 dropdown" id="time-tracker-dropdown">
+                            <button class="btn btn-outline-secondary border-0 position-relative p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="@Localizer["Time Tracker"]">
+                                <i class="bi bi-clock-history fs-5"></i>
+                                <span id="timer-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" style="font-size: 0.6rem;">
+                                    <span class="visually-hidden">@Localizer["active"]</span>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 p-4" style="width: 320px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1050;">
+                                <div class="text-center mb-3">
+                                    <h6 class="fw-bold mb-1">@Localizer["Time Tracker"]</h6>
+                                    <p class="text-muted smaller mb-0">@Localizer["Keep track of your focus"]</p>
+                                </div>
+
+                                <div class="mb-3">
+                                    <input type="text" id="tt-task-name" class="form-control form-control-sm border-0 bg-light rounded-pill px-3" placeholder="@Localizer["What are you working on?"]">
+                                </div>
+
+                                <div class="text-center mb-4 py-3 bg-dark bg-opacity-10 rounded-4">
+                                    <div id="tt-display" class="fw-bold display-6 font-monospace">00:00:00</div>
+                                </div>
+
+                                <div class="d-flex justify-content-center gap-2 mb-4">
+                                    <button onclick="timeTracker.start()" id="tt-start-btn" class="btn btn-primary rounded-pill px-4 shadow-sm fw-bold btn-sm">
+                                        <i class="bi bi-play-fill me-1"></i> @Localizer["Start"]
+                                    </button>
+                                    <button onclick="timeTracker.pause()" id="tt-pause-btn" class="btn btn-warning rounded-pill px-4 shadow-sm fw-bold btn-sm d-none">
+                                        <i class="bi bi-pause-fill me-1"></i> @Localizer["Pause"]
+                                    </button>
+                                    <button onclick="timeTracker.stop()" id="tt-stop-btn" class="btn btn-danger rounded-pill px-4 shadow-sm fw-bold btn-sm d-none">
+                                        <i class="bi bi-stop-fill me-1"></i> @Localizer["Stop"]
+                                    </button>
+                                </div>
+
+                                <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                    <span class="smaller text-muted fw-bold text-uppercase">@Localizer["Today's Total"]</span>
+                                    <span id="tt-daily-total" class="fw-bold text-primary">00:00:00</span>
+                                </div>
+                            </div>
+                        </li>
+
                         <li class="nav-item me-2">
                              <button class="btn btn-outline-secondary theme-toggle border-0" type="button">☀️</button>
                         </li>
@@ -88,7 +127,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/translation.js" asp-append-version="true"></script>
+    <script src="~/js/timeTracker.js" asp-append-version="true"></script>
     <script src="~/js/theme.js" asp-append-version="true"></script>
+
     
     <script>
         window.APP_CULTURE = '@System.Globalization.CultureInfo.CurrentCulture.Name';

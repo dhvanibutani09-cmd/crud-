@@ -472,36 +472,38 @@
                             </div>
                             <div>
                                 <h6 class="card-title fw-bold mb-0">@Localizer["Language Translator"]</h6>
-                                <p class="text-muted small mb-0">@Localizer["Instant manual translation"]</p>
+                                <p class="text-muted small mb-0">@Localizer["Select languages, then translate"]</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex-grow-1">
+                        <!-- Step 1 & 2: Language Selection -->
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="smaller text-muted fw-bold text-uppercase ls-1 mb-1 ms-1">@Localizer["Input"]</label>
+                                <select id="translator-source-lang" class="form-select form-select-sm rounded-pill border-0 shadow-sm bg-light px-3" onchange="updateTranslatorState()" style="font-size: 0.8rem;">
+                                    <option value="" disabled selected>@Localizer["From..."]</option>
+                                    <!-- Populated by JS -->
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="smaller text-muted fw-bold text-uppercase ls-1 mb-1 ms-1">@Localizer["Output"]</label>
+                                <select id="translator-target-lang" class="form-select form-select-sm rounded-pill border-0 shadow-sm bg-light px-3" onchange="updateTranslatorState()" style="font-size: 0.8rem;">
+                                    <option value="" disabled selected>@Localizer["To..."]</option>
+                                    <!-- Populated by JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Text Input -->
                         <div class="mb-3">
-                            <textarea id="translator-input" class="form-control rounded-4 bg-light border-0 shadow-sm p-3 small" rows="3" placeholder="@Localizer["Enter text or sentence to translate..."]"></textarea>
+                            <textarea id="translator-input" class="form-control rounded-4 bg-light border-0 shadow-sm p-3 small" rows="3" placeholder="@Localizer["Select input language first..."]" disabled></textarea>
                         </div>
                         
-                        <div class="d-flex gap-2 mb-3">
-                            <select id="translator-target-lang" class="form-select form-select-sm rounded-pill border-0 shadow-sm bg-light px-3" style="font-size: 0.8rem;">
-                                <option value="hi" selected>हिन्दी (Hindi)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
-                                <option value="en">English</option>
-                                <option value="mr">मराठी (Marathi)</option>
-                                <option value="bn">বাংলা (Bengali)</option>
-                                <option value="es">Español (Spanish)</option>
-                                <option value="fr">Français (French)</option>
-                                <option value="de">Deutsch (German)</option>
-                                <option value="ar">العربية (Arabic)</option>
-                                <option value="zh">中文 (Chinese)</option>
-                                <option value="ja">日本語 (Japanese)</option>
-                                <option value="ru">Русский (Russian)</option>
-                                <option value="pt">Português (Portuguese)</option>
-                                <option value="it">Italiano (Italian)</option>
-                                <option value="ko">한국어 (Korean)</option>
-                            </select>
-                            <button type="button" onclick="performManualTranslation()" id="translator-btn" class="btn btn-dark rounded-pill px-4 shadow-sm fw-bold small" style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%) !important; border: none;">
-                                @Localizer["Translate"]
+                        <div class="text-center mb-3">
+                            <button type="button" onclick="performManualTranslation()" id="translator-btn" class="btn btn-dark rounded-pill px-5 shadow-sm fw-bold btn-sm" style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%) !important; border: none;" disabled>
+                                @Localizer["Translate Now"]
                             </button>
                         </div>
 
@@ -509,9 +511,6 @@
                             <div class="p-3 rounded-4 bg-primary bg-opacity-10 border border-primary border-opacity-10 position-relative">
                                 <label class="smaller fw-bold text-primary text-uppercase mb-2 d-block ls-1">@Localizer["Translation"]</label>
                                 <div id="translator-output" class="text-dark fw-medium" style="white-space: pre-wrap;"></div>
-                                <button class="btn btn-link btn-sm position-absolute top-0 end-0 mt-1 me-1 text-primary opacity-50 hover-opacity-100" onclick="copyTranslatedText()" title="@Localizer["Copy"]">
-                                    <i class="bi bi-clipboard"></i>
-                                </button>
                             </div>
                         </div>
                         
@@ -523,7 +522,7 @@
             </div>
         </div>
 
-</div>
+    </div>
 
 
 <!-- Add Note Modal -->
@@ -1759,9 +1758,48 @@
              listDiv.innerHTML = html;
              listDiv.classList.remove('d-none');
         }
+        function updateTranslatorState() {
+            const source = document.getElementById('translator-source-lang').value;
+            const target = document.getElementById('translator-target-lang').value;
+            const input = document.getElementById('translator-input');
+            const btn = document.getElementById('translator-btn');
+            
+            if (source && target) {
+                input.disabled = false;
+                btn.disabled = false;
+                input.placeholder = "@Localizer["Now enter text to translate..."]";
+            } else {
+                input.disabled = true;
+                btn.disabled = true;
+                input.placeholder = "@Localizer["Select input language first..."]";
+            }
+        }
+
+        async function initTranslator() {
+            try {
+                const response = await fetch('/api/translation/languages');
+                if (response.ok) {
+                    const languages = await response.json();
+                    const sourceSelect = document.getElementById('translator-source-lang');
+                    const targetSelect = document.getElementById('translator-target-lang');
+                    
+                    if (sourceSelect && targetSelect) {
+                        languages.forEach(lang => {
+                            const opt1 = new Option(lang.name, lang.code);
+                            sourceSelect.add(opt1);
+                            const opt2 = new Option(lang.name, lang.code);
+                            targetSelect.add(opt2);
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to load translator languages", error);
+            }
+        }
 
         async function performManualTranslation() {
             const input = document.getElementById('translator-input').value.trim();
+            const sourceLang = document.getElementById('translator-source-lang').value;
             const targetLang = document.getElementById('translator-target-lang').value;
             const btn = document.getElementById('translator-btn');
             const errorDiv = document.getElementById('translator-error');
@@ -1769,9 +1807,10 @@
             const outputDiv = document.getElementById('translator-output');
 
             errorDiv.classList.add('d-none');
+            resultContainer.classList.add('d-none');
             
-            if (!input) {
-                document.getElementById('translator-error-msg').innerText = "@Localizer["Please enter some text to translate."]";
+            if (!input || !sourceLang || !targetLang) {
+                document.getElementById('translator-error-msg').innerText = "@Localizer["Please fill all fields."]";
                 errorDiv.classList.remove('d-none');
                 return;
             }
@@ -1784,7 +1823,11 @@
                 const response = await fetch('/api/translation/translate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ texts: [input], targetLanguage: targetLang })
+                    body: JSON.stringify({ 
+                        texts: [input], 
+                        targetLanguage: targetLang,
+                        sourceLanguage: sourceLang 
+                    })
                 });
 
                 if (response.ok) {
@@ -1793,10 +1836,6 @@
                     if (translatedText) {
                         outputDiv.innerText = translatedText;
                         resultContainer.classList.remove('d-none');
-                        // Scroll to result if on mobile
-                        if (window.innerWidth < 768) {
-                            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
                     } else {
                         throw new Error("Translation failed");
                     }
@@ -1805,7 +1844,7 @@
                 }
             } catch (error) {
                 console.error("Manual translation error:", error);
-                document.getElementById('translator-error-msg').innerText = "@Localizer["Translation failed. Please try again later."]";
+                document.getElementById('translator-error-msg').innerText = "@Localizer["Translation failed."]";
                 errorDiv.classList.remove('d-none');
             } finally {
                 btn.innerHTML = originalBtnContent;
@@ -1813,19 +1852,6 @@
             }
         }
 
-        function copyTranslatedText() {
-            const text = document.getElementById('translator-output').innerText;
-            if (text) {
-                navigator.clipboard.writeText(text).then(() => {
-                    // Visual feedback
-                    const btn = document.querySelector('[onclick="copyTranslatedText()"] i');
-                    btn.className = 'bi bi-check-lg';
-                    setTimeout(() => {
-                        btn.className = 'bi bi-clipboard';
-                    }, 2000);
-                });
-            }
-        }
 
         function selectEmergencyCountry(cca3, name, flagUrl) {
 
@@ -1854,6 +1880,7 @@
             setTimeout(initEmergencySection, 2000); // Give time for main country fetch
             detectLocationAndFetchWeather(); // Detect and fetch
             initCurrencies();
+            initTranslator();
             // initTimezones(); REMOVED
             window.timeUpdateInterval = setInterval(updateTimes, 1000);
             

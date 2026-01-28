@@ -25,8 +25,15 @@ namespace EmployeeCrudApp.Controllers
                 return BadRequest("Invalid request");
             }
 
-            var results = await _translationService.TranslateBatchAsync(request.Texts, request.TargetLanguage);
+            var results = await _translationService.TranslateBatchAsync(request.Texts, request.TargetLanguage, request.SourceLanguage);
             return Ok(results);
+        }
+
+        [HttpGet("languages")]
+        public async Task<IActionResult> GetLanguages()
+        {
+            var languages = await _translationService.GetLanguagesAsync();
+            return Ok(languages);
         }
     }
 
@@ -34,5 +41,6 @@ namespace EmployeeCrudApp.Controllers
     {
         public List<string> Texts { get; set; }
         public string TargetLanguage { get; set; }
+        public string SourceLanguage { get; set; }
     }
 }
